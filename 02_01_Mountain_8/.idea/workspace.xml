@@ -262,8 +262,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1845" />
-    <option name="y" value="517" />
+    <option name="x" value="2135" />
+    <option name="y" value="130" />
     <option name="width" value="2985" />
     <option name="height" value="1813" />
   </component>
@@ -289,7 +289,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../FS_2019/WEBDEMO/WEBDEMOPROJEKTE/Benz_Pascal_2019_WebDemo_Abgelichtet" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../_01-Shapes/01_01" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -324,15 +324,15 @@
       <workItem from="1575229921528" duration="7878000" />
       <workItem from="1575269787479" duration="687000" />
       <workItem from="1575288937968" duration="238000" />
-      <workItem from="1575292080985" duration="5840000" />
+      <workItem from="1575292080985" duration="6909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53190000" />
+    <option name="totallyTimeSpent" value="54259000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="738" y="207" width="1194" height="725" extended-state="0" />
+    <frame x="746" y="112" width="1194" height="725" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10612597" />
