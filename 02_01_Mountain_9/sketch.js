@@ -20,10 +20,15 @@ var options = {
 
 //Eingabe der  Mountains evtl. über UI machen.
 
-var numberOfPoints=1000; //Mit Anfangs- und Endpunkt.
-var windowWidth1=3240;
-var windowHeight1=1920;
-;
+var numberOfPoints=1620; //Mit Anfangs- und Endpunkt.
+
+//Vollbild:
+//var windowWidth1=6480;
+//var windowHeight1=3840;
+
+var windowWidth1=1620;
+var windowHeight1=960;
+
 var mountains;
 var singlePoint; //Vektor in dem die Bergpunkte gespeichert werden.
 var mount1;
