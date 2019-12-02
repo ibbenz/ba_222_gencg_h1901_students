@@ -376,6 +376,7 @@ function connectMountains(mount1, mount2) {
     peak2=mount2.getPeaks();
 
     //Die Peaks und die Anfang und Schlusspunkte
+    //Die Verdoppelung des Peak ist nötig, da es sich ja um zwei Berge handelt.
     let connectMount= new Array((2*peak1+4));
     let connectColor=[0,0,0];
 
@@ -388,13 +389,13 @@ function connectMountains(mount1, mount2) {
     //console.log("connect mount entry 1:"+connectMount[1]);
 
     //Hier lese ich die Peak-Positionen ein.
-    for (let j = 0; j < (peak1+2); j++) {
+    for (let j = 0; j < (2*peak1+2); j++) {
         connectMount[2+2*j]=[mount1.getPeakPoints()[j],1,mount1.getColorMountain()];
         connectMount[3+2*j]=[mount2.getPeakPoints()[j],2,mount2.getColorMountain()];
     }
 
-    connectMount[2*peak1+3]=[mount2.getmountainPoints()[mount1.getWidth()-1],2,mount1.getColorMountain()];
-    connectMount[2*peak1+4]=[mount1.getmountainPoints()[mount2.getWidth()-1],1,mount2.getColorMountain()];
+    connectMount[2*peak1+3]=[mount2.getmountainPoints()[numberOfPoints],2,mount1.getColorMountain()];
+    connectMount[2*peak1+4]=[mount1.getmountainPoints()[numberOfPoints],1,mount2.getColorMountain()];
 
 
     for (let j = 0; j < (2*peak1+4); j++) {
@@ -406,8 +407,8 @@ function connectMountains(mount1, mount2) {
     fill(255,255,255);
     //stroke(10);
 
-
-    for (let i = 0; i <= ((peak1+2)); i++) {
+    //for (let i = 0; i <= ((peak1+2)); i++) {
+    for (let i = 0; i <= ((2*peak1)); i++) {
 
         //Calculate color of triangle.
 
