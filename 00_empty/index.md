@@ -1,6 +1,6 @@
 ---
 layout: sketch
-title: "Mountain_08_quarter_resolution" 
+title: "title of the sketch" 
 category: "Experiment" 
 thumb_name: "thumb.jpg"
 includes:
