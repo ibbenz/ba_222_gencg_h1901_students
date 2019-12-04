@@ -39,3 +39,19 @@ function saveThumb(w, h) {
   let img = get( width/2-w/2, height/2-h/2, w, h);
   save(img,'thumb.jpg');
 }
+
+function initScene() {
+
+    background(0);
+    fill(1);
+    textSize(options.txtSize);
+
+    //Text wird hier in Mitte gesetzt
+    text(options.txt, width/2-textWidth(options.txt)/2, height/2+options.txtSize/2);
+
+    let container = document.getElementById('p5Container');
+    ctx = container.firstChild.getContext("2d");
+    //hier werden die Pixel der Texte herausgeschrieben.
+    let data = ctx.getImageData(0, 0, w, h).data;
+
+}

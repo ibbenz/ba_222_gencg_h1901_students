@@ -40,7 +40,7 @@ var moveMountain=0;
 //Grösse der Bewegung des Mountains.
 var diffMountain=2;
 //Starten der Animation, beenden des Setups;
-var start=false;
+var start=true;
 
 
 

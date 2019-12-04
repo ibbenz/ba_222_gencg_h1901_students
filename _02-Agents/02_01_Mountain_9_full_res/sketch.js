@@ -40,7 +40,7 @@ var moveMountain=0;
 //Grösse der Bewegung des Mountains.
 var diffMountain=2;
 //Starten der Animation, beenden des Setups;
-var start=false;
+var start=true;
 
 
 
@@ -322,20 +322,29 @@ class mountainElement {
 
 
 function keyPressed() {
-    if (key == 'a' ||key == 'A') start=true;
+    if (key == 'a' ||key == 'A') {start=true; console.log("Hulla")};
     if (key == 'd' || key == 'D') start=false;
 
     //38 ist lift fährt rauf
-    if (key == 'w' ||key == 'W'){moveMountain=-diffMountain;}
+/*    if (key == 'w' ||key == 'W'){moveMountain=-diffMountain;}
     //40 ist lift fährt runter
-    if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}
+    if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}*/
+
+    //38 ist lift fährt rauf
+    //if (key === 38){moveMountain=-diffMountain; console.log("Hello")} ;
+    if (key === 38) console.log("Hello") ;
+    //40 ist lift fährt runter
+    if (key === 37)moveMountain=+diffMountain;
 }
 
 function keyReleased() {
     //38 ist lift fährt rauf
-    if (key == 'w' ||key == 'W'){moveMountain=0;}
+/*    if (key == 'w' ||key == 'W'){moveMountain=0;}
     //40 ist lift fährt runter
-    if (key == 's' ||key == 'S'){moveMountain=0;}
+    if (key == 's' ||key == 'S'){moveMountain=0;}*/
+    if (key === 38){moveMountain=0;}
+    //40 ist lift fährt runter
+    if (key === 37){moveMountain=0;}
 }
 
 
