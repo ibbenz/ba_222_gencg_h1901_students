@@ -325,10 +325,17 @@ function keyPressed() {
     if (key == 'a' ||key == 'A') start=true;
     if (key == 'd' || key == 'D') start=false;
 
+/*
     //38 ist lift fährt rauf
     if (key == 'w' ||key == 'W'){moveMountain=-diffMountain;}
     //40 ist lift fährt runter
     if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}
+*/
+
+    //38 ist lift fährt rauf
+    if (keyCode ==38){moveMountain=-diffMountain;}
+    //40 ist lift fährt runter
+    if (keyCode == 40){moveMountain=+diffMountain;}
 }
 
 function keyReleased() {
@@ -336,6 +343,11 @@ function keyReleased() {
     if (key == 'w' ||key == 'W'){moveMountain=0;}
     //40 ist lift fährt runter
     if (key == 's' ||key == 'S'){moveMountain=0;}
+
+    //38 ist lift fährt rauf
+    if (keyCode ==38){moveMountain=0;}
+    //40 ist lift fährt runter
+    if (keyCode == 40){moveMountain=0;}
 }
 
 

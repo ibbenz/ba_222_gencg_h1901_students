@@ -331,10 +331,10 @@ function keyPressed() {
     if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}*/
 
     //38 ist lift fährt rauf
-    //if (key === 38){moveMountain=-diffMountain; console.log("Hello")} ;
-    if (key === 38) console.log("Hello") ;
+    if (keyCode === 38){moveMountain=-diffMountain;} ;
     //40 ist lift fährt runter
-    if (key === 37)moveMountain=+diffMountain;
+    if (keyCode === 40)moveMountain=+diffMountain;
+    console.log(keyCode);
 }
 
 function keyReleased() {
@@ -342,9 +342,9 @@ function keyReleased() {
 /*    if (key == 'w' ||key == 'W'){moveMountain=0;}
     //40 ist lift fährt runter
     if (key == 's' ||key == 'S'){moveMountain=0;}*/
-    if (key === 38){moveMountain=0;}
+    if (keyCode === 38){moveMountain=0;}
     //40 ist lift fährt runter
-    if (key === 37){moveMountain=0;}
+    if (keyCode === 40){moveMountain=0;}
 }
 
 
