@@ -56,6 +56,9 @@ let shiftRectX;
 let shiftRectY;
 let opacityScale;
 
+
+
+
 function setup() {
 
   // Canvas setup
