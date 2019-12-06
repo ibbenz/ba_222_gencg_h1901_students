@@ -84,6 +84,14 @@ function setup() {
     reFadeTime=timestamp();
     reBackgroundTime=timestamp();
 
+    mixColor[0]=rectColor[0]*(1-mixRatio)+mixRatio*backgroundColor[0];
+    mixColor[1]=rectColor[1]*(1-mixRatio)+mixRatio*backgroundColor[1];
+    mixColor[2]=rectColor[2]*(1-mixRatio)+mixRatio*backgroundColor[2];
+    mixRatio=mixRatio*mixRatioFade;
+
+
+
+
 }
 
 function draw() {
