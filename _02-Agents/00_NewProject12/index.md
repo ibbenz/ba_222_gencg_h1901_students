@@ -1,6 +1,6 @@
 ---
 layout: sketch
-title: "title of the sketch" 
+title: "Project Pointilation 12" 
 category: "Experiment" 
 thumb_name: "thumb.jpg"
 includes:
