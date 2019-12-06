@@ -24,7 +24,7 @@ var origOpacity=255;
 var elevatorScaler=windowHeight1;
 
 //Wie schnell Tropfen ausblassen soll.
-var fader=options.FaderValue;
+var fader;;
 var backgroundFader=10;
 
 let diamant;
@@ -35,8 +35,8 @@ let currentDiamondNumber;
 let counter=0;
 let move=0;
 let moveOld=0;
-let lowRadiusLimit=options.LowLimitRadius;
-let highRadiusLimit=options.HighLimitRadius;
+let lowRadiusLimit;
+let highRadiusLimit;
 
 //Variation der Opacity des untenliegenden Rechteckes
 let randOpacity;
@@ -47,8 +47,8 @@ let randomSigma;
 let radiusBase;
 
 //Die Variablen für einen Rechteckstein
-let rectWidth=options.rectangleWidth;
-let rectHeight=options.rectangleHeight;
+let rectWidth;
+let rectHeight;
 let rectPosX;
 let rectPosY;
 //Das leicht unterlagerte Rechteck
@@ -57,11 +57,20 @@ let shiftRectY;
 let opacityScale;
 
 function setup() {
+
   // Canvas setup
   canvas = createCanvas(windowWidth1, windowHeight1);
   canvas.parent("p5Container");
   // Detect screen density (retina)
   var density = displayDensity();
+
+
+    fader=options.FaderValue;
+    lowRadiusLimit=options.LowLimitRadius;
+    highRadiusLimit=options.HighLimitRadius;
+    rectWidth=options.rectangleWidth;
+    rectHeight=options.rectangleHeight;
+
   pixelDensity(density);
   oldtime=timestamp();
   backgroundColor= new Array(255,255,245);

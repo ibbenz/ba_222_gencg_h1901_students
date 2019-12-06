@@ -304,8 +304,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gui.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+            <state relative-caret-position="221">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -313,8 +313,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="316" column="3" lean-forward="true" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
+            <state relative-caret-position="162">
+              <caret line="477" column="74" selection-start-line="477" selection-start-column="67" selection-end-line="477" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -364,8 +364,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1932" />
-    <option name="y" value="1325" />
+    <option name="x" value="1747" />
+    <option name="y" value="95" />
     <option name="width" value="3020" />
     <option name="height" value="1740" />
   </component>
@@ -391,7 +391,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../00_NewProject12" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -434,15 +434,15 @@
       <workItem from="1575453147803" duration="597000" />
       <workItem from="1575464255446" duration="1805000" />
       <workItem from="1575583672167" duration="575000" />
-      <workItem from="1575617698124" duration="2006000" />
+      <workItem from="1575617698124" duration="2517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74065000" />
+    <option name="totallyTimeSpent" value="74576000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="773" y="530" width="1208" height="696" extended-state="0" />
+    <frame x="699" y="38" width="1208" height="696" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1483376" />
@@ -480,15 +480,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="221">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="316" column="3" lean-forward="true" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
+        <state relative-caret-position="162">
+          <caret line="477" column="74" selection-start-line="477" selection-start-column="67" selection-end-line="477" selection-end-column="74" />
         </state>
       </provider>
     </entry>
