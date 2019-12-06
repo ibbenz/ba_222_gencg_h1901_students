@@ -9,7 +9,7 @@ var options = {
     //NumberDia: 10,
 };
 
-window.onload = function() {
+/*window.onload = function() {
   var gui = new dat.GUI();
     gui.add(options, 'rectangleWidth').min(40).max(200).step(4);
     gui.add(options, 'rectangleHeight').min(40).max(200).step(4);
@@ -19,7 +19,7 @@ window.onload = function() {
     gui.add(options, 'MixFade').min(0.8).max(0.99).step(0.1);
     //gui.add(options, 'NumberDia').min(5).max(40).step(5);
 
-};
+};*/
 
 //Height und Width von 10 und Anzahl 400 sieht nicht schlecht aus.
 //und evtl. MixFade von 0.95

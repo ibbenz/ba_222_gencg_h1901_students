@@ -106,6 +106,13 @@ function setup() {
 function draw() {
 
     //Updaten der Eingabewerte vom GUI:
+
+    mixRatioFade=options.MixFade;
+    fader=options.FaderValue;
+    lowRadiusLimit=options.LowLimitRadius;
+    highRadiusLimit=options.HighLimitRadius;
+    rectWidth=options.rectangleWidth;
+    rectHeight=options.rectangleHeight;
     lowRadiusLimit=options.LowLimitRadius;
     highRadiusLimit=options.HighLimitRadius;
     rectWidth=options.rectangleWidth;
