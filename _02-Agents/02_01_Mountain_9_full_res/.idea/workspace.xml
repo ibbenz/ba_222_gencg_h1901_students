@@ -271,9 +271,11 @@
     <session id="-1971885586">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -303,7 +305,7 @@
         <entry file="file://$PROJECT_DIR$/gui.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -311,8 +313,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="337" column="1" lean-forward="true" selection-start-line="337" selection-start-column="1" selection-end-line="337" selection-end-column="1" />
+            <state relative-caret-position="51">
+              <caret line="316" column="3" lean-forward="true" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -362,8 +364,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="420" />
-    <option name="y" value="372" />
+    <option name="x" value="940" />
+    <option name="y" value="1397" />
     <option name="width" value="3020" />
     <option name="height" value="1740" />
   </component>
@@ -389,7 +391,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../02_01_Mountain_9" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../00_NewProject12" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -431,14 +433,17 @@
       <workItem from="1575453047741" duration="19000" />
       <workItem from="1575453147803" duration="597000" />
       <workItem from="1575464255446" duration="1805000" />
+      <workItem from="1575583672167" duration="575000" />
+      <workItem from="1575617698124" duration="1897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71484000" />
+    <option name="totallyTimeSpent" value="73956000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="168" y="149" width="1208" height="696" extended-state="0" />
+    <frame x="376" y="559" width="1208" height="696" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1483376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -476,14 +481,14 @@
     <entry file="file://$PROJECT_DIR$/gui.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="337" column="1" lean-forward="true" selection-start-line="337" selection-start-column="1" selection-end-line="337" selection-end-column="1" />
+        <state relative-caret-position="51">
+          <caret line="316" column="3" lean-forward="true" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
         </state>
       </provider>
     </entry>
