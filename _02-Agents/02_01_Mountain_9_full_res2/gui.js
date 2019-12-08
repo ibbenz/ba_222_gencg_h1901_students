@@ -1,8 +1,8 @@
 var options = {
     numberOfMountains: 6,
-    numberOfPeaks: 40,
+    numberOfPeaks: 80,
     opacity: 100,
-    colorShade: 50,
+    colorShade: 40,
 };
 
 /*
