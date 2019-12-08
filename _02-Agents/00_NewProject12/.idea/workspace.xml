@@ -277,6 +277,7 @@
     <session id="-179984919">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -300,8 +301,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="357">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
@@ -437,12 +438,12 @@
       <workItem from="1575622470085" duration="3089000" />
       <workItem from="1575625658612" duration="3767000" />
       <workItem from="1575629801726" duration="102000" />
-      <workItem from="1575633568977" duration="1046000" />
+      <workItem from="1575633568977" duration="1329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49593000" />
+    <option name="totallyTimeSpent" value="49876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="199" y="63" width="1083" height="726" extended-state="0" />
@@ -497,8 +498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="357">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
         </state>
       </provider>
     </entry>
