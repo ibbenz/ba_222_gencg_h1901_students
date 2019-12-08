@@ -38,7 +38,7 @@ var oldtime;
 //Der Berg soll sich entsprechend den up/down-keys bewegen.
 var moveMountain=0;
 //Grösse der Bewegung des Mountains.
-var diffMountain=2;
+var diffMountain=1;
 //Starten der Animation, beenden des Setups;
 var start=true;
 
