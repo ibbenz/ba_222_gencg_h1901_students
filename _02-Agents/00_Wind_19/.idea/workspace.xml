@@ -495,10 +495,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1952" />
-    <option name="y" value="845" />
-    <option name="width" value="3505" />
-    <option name="height" value="1875" />
+    <option name="x" value="1715" />
+    <option name="y" value="50" />
+    <option name="width" value="2688" />
+    <option name="height" value="1825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -575,15 +575,15 @@
       <workItem from="1575969527802" duration="3401000" />
       <workItem from="1575972987922" duration="1518000" />
       <workItem from="1575978543101" duration="2279000" />
-      <workItem from="1575984344158" duration="109000" />
+      <workItem from="1575984344158" duration="184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77566000" />
+    <option name="totallyTimeSpent" value="77641000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="781" y="338" width="1402" height="750" extended-state="0" />
+    <frame x="185" y="9" width="1402" height="750" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11923921" />
