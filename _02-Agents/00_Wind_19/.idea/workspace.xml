@@ -495,8 +495,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1442" />
-    <option name="y" value="1022" />
+    <option name="x" value="1952" />
+    <option name="y" value="845" />
     <option name="width" value="3505" />
     <option name="height" value="1875" />
   </component>
@@ -510,8 +510,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="00_NewProject17" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_NewProject17" type="462c0819:PsiDirectoryNode" />
+              <item name="00_Wind_19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_Wind_19" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -575,15 +575,15 @@
       <workItem from="1575969527802" duration="3401000" />
       <workItem from="1575972987922" duration="1518000" />
       <workItem from="1575978543101" duration="2279000" />
-      <workItem from="1575984344158" duration="17000" />
+      <workItem from="1575984344158" duration="109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77474000" />
+    <option name="totallyTimeSpent" value="77566000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="130" y="52" width="1402" height="750" extended-state="0" />
+    <frame x="781" y="338" width="1402" height="750" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11923921" />
