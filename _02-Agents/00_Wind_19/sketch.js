@@ -41,7 +41,6 @@ let repetitionLine;
 let repetitionTime;
 let distance;
 
-p5.disableFriendlyErrors = true; // disables FES
 
 
 function setup() {

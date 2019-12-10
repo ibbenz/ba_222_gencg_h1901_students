@@ -449,8 +449,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2465" />
-    <option name="y" value="1830" />
+    <option name="x" value="232" />
+    <option name="y" value="55" />
     <option name="width" value="3415" />
     <option name="height" value="1790" />
   </component>
@@ -476,7 +476,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../00_NewProject19" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../_02-Agents/00_Wind_19" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -527,15 +527,15 @@
       <workItem from="1575960368601" duration="7279000" />
       <workItem from="1575968761111" duration="601000" />
       <workItem from="1575969527802" duration="3401000" />
-      <workItem from="1575972968315" duration="1231000" />
+      <workItem from="1575972968315" duration="1262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74891000" />
+    <option name="totallyTimeSpent" value="74922000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="986" y="732" width="1366" height="716" extended-state="0" />
+    <frame x="93" y="22" width="1366" height="716" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.122464314" />
