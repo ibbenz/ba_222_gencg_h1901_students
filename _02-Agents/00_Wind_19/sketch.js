@@ -182,12 +182,12 @@ function draw() {
                 anglecounter--;}
 
             if(anglecounter==0){
-                console.log("Hallo");
+                //console.log("Hallo");
                 if(angle>0){
-                    console.log("redux");
+                    //console.log("redux");
                     angle=angle-(2*PI/360);
                 }else if(angle<0){
-                    console.log("increase");
+                    //console.log("increase");
                     angle=angle+(2*PI/360);
 
                 }
@@ -260,7 +260,7 @@ function draw() {
     //fill(255);
     //stroke(0);
     //text("FPS: " + fps.toFixed(2), 100, 100 - 10);
-    console.log("Framerate: "+fps.toFixed(2));
+    //console.log("Framerate: "+fps.toFixed(2));
 
 
 
@@ -326,7 +326,7 @@ function keyPressed() {
     if (keyCode === 38){move=-1} ;
     //40 ist lift fährt runter
     if (keyCode === 40)move=+1;
-    console.log(keyCode);
+    //console.log(keyCode);
     if (keyCode === 32){reset=true;}
 }
 

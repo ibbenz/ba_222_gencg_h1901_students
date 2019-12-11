@@ -221,8 +221,8 @@ function draw() {
                     rectPosY=random(0,elevatorScaler+0.1*windowHeight1);
                 }
             }
-            console.log("elevatorScaler:"+elevatorScaler);
-            console.log("lowLimit:"+0.1*windowHeight1);
+            //console.log("elevatorScaler:"+elevatorScaler);
+            //console.log("lowLimit:"+0.1*windowHeight1);
 
             diamant=new Diamond(rectPosX,rectPosY,rectWidth,rectHeight,mixColor,opacity,1,(PI/4.0));
             diamondList[i] = diamant;
@@ -277,7 +277,7 @@ function keyPressed() {
     if (keyCode === 38){move=-1} ;
     //40 ist lift fährt runter
     if (keyCode === 40)move=+1;
-    console.log(keyCode);
+    //console.log(keyCode);
 }
 
 function keyReleased() {
