@@ -5,7 +5,7 @@ var options = {
     LowLimitRadius: 1,
     HighLimitRadius: 4,
     FaderValue: 50,
-    MixFade: 0.95,
+    MixFade: 0.7,
     //NumberDia: 10,
 };
 

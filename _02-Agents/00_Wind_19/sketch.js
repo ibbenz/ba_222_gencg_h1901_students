@@ -24,7 +24,8 @@ let angle;
 let referenceAngle;
 let anglecounter;
 let reset=false;
-
+let resetTime;
+let resetTrigger;
 
 
 //X und Y-Position des Startpunktes.
@@ -54,7 +55,8 @@ function setup() {
   pixelDensity(density);
   oldtime=timestamp();
 
-  backgroundColor= new Array(170,255,245); //Blau
+  //backgroundColor= new Array(170,255,245); //Blau
+    backgroundColor= new Array(0,0,100); //Blau
     // backgroundColor= new Array(255,255,170); //Gelb
     //backgroundColor= new Array(255,170,255); //Pink
   background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
@@ -70,6 +72,8 @@ function setup() {
   lineColor=color(255,colorShade,170);
   anglecounter=0;
   moveDifference=1;
+  resetTime=0;
+  resetTrigger=false;
   LineArray=[];
 
   //Winkel der Linie;
@@ -161,7 +165,7 @@ function draw() {
 
 
 
-    if((timestamp()-oldtime)>5){
+    if((timestamp()-oldtime)>2){
         background(backgroundColor[0],backgroundColor[1],backgroundColor[2],100);
 
 
@@ -223,6 +227,22 @@ function draw() {
 
 
     }
+
+    //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
+        if((move!=0)&&(resetTrigger==false)){
+            resetTime=timestamp();
+            resetTrigger=true;
+        }
+
+        console.log("move:"+move);
+
+        //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
+        if((resetTrigger==true)&&((timestamp()-resetTime)>3000)){
+            resetTime=timestamp();
+            resetTrigger=false;
+            move=0;
+        }
+
 
     //console.log("Arraylänge: "+LineArray.length);
 
@@ -327,7 +347,10 @@ function keyPressed() {
     //40 ist lift fährt runter
     if (keyCode === 40)move=+1;
     //console.log(keyCode);
-    if (keyCode === 32){reset=true;}
+   // if (keyCode === 32){reset=true;}
+    if (keyCode === 32){
+        move=0;
+    }
 }
 
 function keyReleased() {
@@ -335,11 +358,13 @@ function keyReleased() {
     /*    if (key == 'w' ||key == 'W'){moveMountain=0;}
         //40 ist lift fährt runter
         if (key == 's' ||key == 'S'){moveMountain=0;}*/
-    if (keyCode === 38){move=0;}
+    //if (keyCode === 38){move=0;}
     //40 ist lift fährt runter
-    if (keyCode === 40){move=0;}
+    //if (keyCode === 40){move=0;}
 
-    if (keyCode === 32){reset=false;}
+    //if (keyCode === 32){reset=false;}
+
+    //if (keyCode === 32){move=0;}
 }
 
 

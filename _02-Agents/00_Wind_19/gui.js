@@ -8,7 +8,7 @@ var options = {
     repetitionLine: 100,
     repetitionTime: 100,
     lineStroke: 1,
-    colorShade: 240,
+    colorShade: 200,
 
     //NumberDia: 10,
 };

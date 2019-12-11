@@ -26,6 +26,10 @@ var elevatorScaler=windowHeight1;
 //Wie schnell Tropfen ausblassen soll.
 var fader;;
 var backgroundFader=10;
+let reset=false;
+let resetTime;
+let resetTrigger;
+
 
 let diamant;
 let redrawTime=0;
@@ -76,7 +80,7 @@ function setup() {
 
   pixelDensity(density);
   oldtime=timestamp();
-  backgroundColor= new Array(255,255,245);
+  backgroundColor= new Array(50,50,50);
   rectColor=new Array(255,0,0);
   mixColor=[];
   mixRatioFade=options.MixFade;
@@ -86,6 +90,8 @@ function setup() {
   opacityScale=0.9;
   currentDiamondNumber=0;
   diamondList=new Array(numOfDiamonds);
+  resetTime=0;
+  resetTrigger=false;
 
   //constructor(posX,posY,width,height,color,opacity,scale)
   //console.log("color 1: "+rectColor);
@@ -198,8 +204,8 @@ function draw() {
 
 
             if(move<(-0.1)){
-                elevatorScaler=elevatorScaler*0.99;
-                rectPosY=random(1.1*windowHeight1-elevatorScaler,windowHeight1);
+                elevatorScaler=elevatorScaler*0.8;
+                rectPosY=random(windowHeight1-elevatorScaler,0.8*windowHeight1);
                 moveOld=move;
             } else if(move>(0.1)){
                 elevatorScaler=elevatorScaler*0.99;
@@ -254,11 +260,24 @@ function draw() {
     pop();
     //translate(0,move);
     if(((timestamp()-reBackgroundTime)>backgroundFader)) {
-        background(backgroundColor[0], backgroundColor[1], backgroundColor[2], 20);
+        background(backgroundColor[0], backgroundColor[1], backgroundColor[2], 5);
     }
 
 
+    //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
+    if((move!=0)&&(resetTrigger==false)){
+        resetTime=timestamp();
+        resetTrigger=true;
+    }
 
+    //console.log("move:"+move);
+
+    //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
+    if((resetTrigger==true)&&((timestamp()-resetTime)>3000)){
+        resetTime=timestamp();
+        resetTrigger=false;
+        move=0;
+    }
 
 //Falls Vektor mit Rechtecken voll ist, beginne ihn erneut von vorne zu füllen.
 
@@ -278,6 +297,9 @@ function keyPressed() {
     //40 ist lift fährt runter
     if (keyCode === 40)move=+1;
     //console.log(keyCode);
+    if (keyCode === 32){
+        move=0;
+    }
 }
 
 function keyReleased() {
@@ -285,9 +307,9 @@ function keyReleased() {
     /*    if (key == 'w' ||key == 'W'){moveMountain=0;}
         //40 ist lift fährt runter
         if (key == 's' ||key == 'S'){moveMountain=0;}*/
-    if (keyCode === 38){move=0;}
+    //if (keyCode === 38){move=0;}
     //40 ist lift fährt runter
-    if (keyCode === 40){move=0;}
+    //if (keyCode === 40){move=0;}
 }
 
 

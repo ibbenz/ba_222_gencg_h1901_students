@@ -136,13 +136,13 @@ function draw() {
 
 
         if (timeDiff > 1000) {
-            console.log("Output: " + timeDiff);
+            //console.log("Output: " + timeDiff);
             oldtime = time;
 
             for (let k = 0; k <= options.numberOfMountains; k++) {
                 //Wir erstellen die zufälligen Verschiebungswerte der Peakpoints jedes Mountain.
                 temporaryWave[k] = toInt(random(-windowWidth1, windowWidth1));
-                console.log("tempWave first:" + temporaryWave[k]);
+                //console.log("tempWave first:" + temporaryWave[k]);
                 //Innerhalb von 1000 Frames wird die Verschiebung umgesetzt.
                 temporaryWaveCounter[k] = temporaryWave[k] / 1000;
             }
@@ -219,9 +219,9 @@ function draw() {
 
 
 
-        console.log("Move Mountain: "+moveMountain);
+        //console.log("Move Mountain: "+moveMountain);
         if(abs(moveMountain)>0){
-            console.log("Hello");
+            //console.log("Hello");
         }
 
     }
@@ -268,9 +268,9 @@ class mountainElement {
 
     let a;
     let verhaeltnis=_width/numberOfPoints;
-      console.log("width: "+_width);
-      console.log("numberOfPoints: "+numberOfPoints);
-    console.log("verhaeltnis: "+verhaeltnis);
+      //console.log("width: "+_width);
+      //console.log("numberOfPoints: "+numberOfPoints);
+    //console.log("verhaeltnis: "+verhaeltnis);
     //Wir befüllen die Matrix mit Punkten
     for (let i = 0; i <= (numberOfPoints-1); i++) {
       //for (let i = 1; i <= (numberOfPoints-2); i++) {
@@ -287,9 +287,9 @@ class mountainElement {
           let point=toInt(random(1,(numberOfPoints-2)));
           //console.log("randomnumber: "+point)
           //Die Peakpoints erhalten die doppelte Menge der Punkte. Nämlich auch die gespiegelten.
-          console.log("point: "+point);
+          //console.log("point: "+point);
           peakPoints[j]=createVector(mountainPoints[point].x,mountainPoints[point].y);
-          console.log("Peak Point: "+peakPoints[j]);
+          //console.log("Peak Point: "+peakPoints[j]);
       }
 
       peakPoints.sort(compareVectors);
@@ -298,7 +298,7 @@ class mountainElement {
           peakPoints[j];
       }*/
 
-      console.log("randomnumber: "+point)
+      //console.log("randomnumber: "+point)
 
 
     this.draw = function() {
@@ -334,7 +334,7 @@ function keyPressed() {
     if (keyCode === 38){moveMountain=-diffMountain;} ;
     //40 ist lift fährt runter
     if (keyCode === 40)moveMountain=+diffMountain;
-    console.log(keyCode);
+    //console.log(keyCode);
 }
 
 function keyReleased() {
