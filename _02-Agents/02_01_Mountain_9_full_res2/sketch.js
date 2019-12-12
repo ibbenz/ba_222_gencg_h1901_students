@@ -176,7 +176,7 @@ function draw() {
             //Innerhalb von 1000 Frames wird die Verschiebung umgesetzt.
             //Wollen wir eine höhere Geschwindigkeit so reduzieren wir die Framenummer
             temporaryWaveCounter[l] = temporaryWave[l] / 500;
-            for (let m = 0; m <= options.numberOfPeaks; m++) {
+            for (let m = 1; m <= (options.numberOfPeaks-2); m++) {
                 //console.log("tempWave:" + temporaryWave[l]);
                 //console.log("tempPeak:" + temporaryPeakPoints[m]);
 
@@ -255,7 +255,7 @@ class mountainElement {
 
     this.getiterationDepth = function() { return _iterationDepth; }
 
-    this.getmountainPoints = function() { return mountainPoints; }
+    this.getMountainPoints = function() { return mountainPoints; }
 
     this.setPeaks = function(peaks) { _peaks = peaks; }
 
@@ -287,8 +287,10 @@ class mountainElement {
       //Ich entscheide mich dafür bei der "blau-gelben"-Farbskala zu bleiben.
       colorMountain=createVector(toInt(random(0,255)),options.colorShade,toInt(random(0,255)),options.opacity);
 
+      //Die Randpunkte sollen fixiert werden:
+      peakPoints[0]=createVector(mountainPoints[0].x,mountainPoints[0].y);
       //Wir setzen die Peaks der Berge
-      for (let j = 0; j <= (peaks); j++) {
+      for (let j = 1; j <= (peaks-1); j++) {
           let point=toInt(random(1,(numberOfPoints-2)));
           //console.log("randomnumber: "+point)
           //Die Peakpoints erhalten die doppelte Menge der Punkte. Nämlich auch die gespiegelten.
@@ -296,6 +298,9 @@ class mountainElement {
           peakPoints[j]=createVector(mountainPoints[point].x,mountainPoints[point].y);
           //console.log("Peak Point: "+peakPoints[j]);
       }
+      peakPoints[peaks]=createVector(mountainPoints[numberOfPoints-1].x,mountainPoints[numberOfPoints-1].y);
+
+
 
       peakPoints.sort(compareVectors);
 
