@@ -34,9 +34,11 @@ var elevatorCenter;
 //Wie schnell Tropfen ausblassen soll.
 var fader;;
 var backgroundFader=10;
-let reset=false;
 let resetTime;
 let resetTrigger;
+
+//Setzt alles wieder auf den Ausgangszustand zurück.
+let reset;
 
 
 let diamant;
@@ -108,7 +110,8 @@ function setup() {
   diamondList=new Array(numOfDiamonds);
   resetTime=0;
   resetTrigger=false;
-  moveEndTime=timestamp();;
+  moveEndTime=timestamp();
+  reset=false;
 
   //constructor(posX,posY,width,height,color,opacity,scale)
   //console.log("color 1: "+rectColor);
@@ -146,6 +149,11 @@ function draw() {
     fader=options.FaderValue;
     mixRatioFade=options.MixFade;
     //numOfDiamonds=options.NumberDia;
+
+    if(reset==true){
+        background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+        reset=false;
+    }
 
     //Geschwindigkeit mit der Farbwechsel Hintergrundfarbe-Objektfarbe stattfindet
     //Nachdem ich Punkte gezeichnet habe, passe ich nach jeder fader-Zeit die Farbe an.
@@ -340,6 +348,7 @@ function keyPressed() {
     //console.log(keyCode);
     if (keyCode === 32){
         move=0;
+        reset=true;
     }
 }
 

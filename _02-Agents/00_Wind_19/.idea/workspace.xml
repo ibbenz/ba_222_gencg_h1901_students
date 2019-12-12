@@ -416,7 +416,7 @@
     <session id="555126729">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.24" value="1" />
@@ -442,8 +442,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -515,8 +515,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2172" />
-    <option name="y" value="505" />
+    <option name="x" value="-293" />
+    <option name="y" value="595" />
     <option name="width" value="3260" />
     <option name="height" value="1730" />
   </component>
@@ -599,15 +599,15 @@
       <workItem from="1576068581605" duration="1318000" />
       <workItem from="1576069931519" duration="1787000" />
       <workItem from="1576073675846" duration="9024000" />
-      <workItem from="1576154131259" duration="809000" />
+      <workItem from="1576154131259" duration="1036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90848000" />
+    <option name="totallyTimeSpent" value="91075000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="869" y="202" width="1304" height="692" extended-state="0" />
+    <frame x="-117" y="238" width="1304" height="692" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12844759" />
@@ -638,8 +638,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

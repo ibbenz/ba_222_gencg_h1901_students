@@ -24,8 +24,14 @@ let angle;
 let referenceAngle;
 let anglecounter;
 let reset=false;
+let start;
 let resetTime;
 let resetTrigger;
+
+//Bewirkt dass Winkel nach start nicht wieder auf genau 0 zurückgeht.
+let noiseAngle;
+//Bereinigen des Backgrounds
+let backgroundReset;
 
 //Winkel, um den die Linie rotiert:
 let rotateAngleDeg;
@@ -45,7 +51,7 @@ let verticalDivisions;
 let repetitionLine;
 //Zeitlicher Abstand in dem dieses gleichzeitige Zeichnen geschieht
 let repetitionTime;
-let distance;
+
 
 
 function setup() {
@@ -78,8 +84,12 @@ function setup() {
   moveDifference=1;
   resetTime=0;
   resetTrigger=false;
+  reset=true;
+  start=false;
+  backgroundReset=false;
   LineArray=[];
   rotateAngleDeg=45;
+  noiseAngle=0.01;
 
   //Winkel der Linie;
   angle=0;
@@ -113,7 +123,6 @@ function setup() {
         LineArray[l].draw();
     }
 
-    distance=0;
 
   
 
@@ -131,6 +140,17 @@ function draw() {
     lineStroke=options.lineStroke;
     colorShade=options.colorShade;
 
+    if(backgroundReset==false){
+    background(backgroundColor[0],backgroundColor[1],backgroundColor[2],10);
+    }else{
+        background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
+        backgroundReset=true;
+    }
+
+
+
+    //Hier zeichnen wir die Linien immer und immer wieder, wenn das reset true ist.
+    //Dies wird deaktiviert, sobald eine Bewegung stattfindet.
     if(reset==true){
 
         angle=0;
@@ -158,21 +178,19 @@ function draw() {
             }
         }
 
-
-        for(let l=0;l<LineArray.length;l++){
-            LineArray[l].draw();
+        if(start==true) {
+            for (let l = 0; l < LineArray.length; l++) {
+                LineArray[l].draw();
+            }
         }
-
-
-
 
     };
 
 
 
 
-    if((timestamp()-oldtime)>2){
-        background(backgroundColor[0],backgroundColor[1],backgroundColor[2],10);
+    if((timestamp()-oldtime)>1){
+
 
 
 
@@ -183,16 +201,21 @@ function draw() {
     switch(move){
 
         case 0:
+            //Wird nach einer Bewegung wieder 0, dann setzen wir die Move-Difference hoch
+            //erst nach einem Reset ist diese wieder OK.
+            moveDifference=3;
             if(anglecounter<0){
-                angle=angle-(rotateAngleDeg*2*PI/360);
+                angle=angle-(rotateAngleDeg*2*PI/360)-noiseAngle;
                 anglecounter++;}
 
             if(anglecounter>0){
-                angle=angle+(rotateAngleDeg*2*PI/360);
+                angle=angle+(rotateAngleDeg*2*PI/360)+noiseAngle;
                 anglecounter--;}
 
             if(anglecounter==0){
                 //console.log("Hallo");
+                //Durch den ständigen Wechsel der Winkel gibt es nach der Bewegung diese Vögel.
+                //Aufgrund der unsauberen Division durch eine Zahl und den Rundungsfehlern??
                 if(angle>0){
                     //console.log("redux");
                     angle=angle-(rotateAngleDeg*2*PI/360);
@@ -200,6 +223,8 @@ function draw() {
                     //console.log("increase");
                     angle=angle+(rotateAngleDeg*2*PI/360);
 
+                }else{
+                    angle=angle
                 }
             }
 
@@ -207,7 +232,9 @@ function draw() {
 
             break;
 
+            //Solange Winkel grosser als -2Pi ist verkleinere ihn.
         case 1:
+            reset=false;
             if(angle>(-2*PI)) {
                 angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
                 referenceAngle=referenceAngle+(rotateAngleDeg*2 * PI / 360)
@@ -219,7 +246,9 @@ function draw() {
 
 
 
+            //Solange Winkel kleiner als 2Pi ist, erhöhe ihn
         case -1:
+            reset=false;
             if(angle<(2*PI)) {
                 angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
                 referenceAngle=referenceAngle-(rotateAngleDeg*2 * PI / 360)
@@ -243,7 +272,7 @@ function draw() {
         console.log("move:"+move);
 
         //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
-        if((resetTrigger==true)&&((timestamp()-resetTime)>3000)){
+        if((resetTrigger==true)&&((timestamp()-resetTime)>1000)){
             resetTime=timestamp();
             resetTrigger=false;
             move=0;
@@ -257,8 +286,12 @@ function draw() {
     let helper1;
     let helper2;
 
+    //Hier zeichnen wir die Linien.
+        // Dies wird nur getan, wenn wir das Programm gestartet haben.
     //Hier drehen wir die Linien entsprechend dem vorgegebenen Winkel:
-    for(let l=0;l<LineArray.length;l++){
+
+        if(start==true){
+            for(let l=0;l<LineArray.length;l++){
         helper1=LineArray[l].getPosX1()+moveDifference*cos(angle);
         LineArray[l].setPosX1(helper1);
         helper2=LineArray[l].getPosY1()+moveDifference*sin(angle);
@@ -270,17 +303,16 @@ function draw() {
         //helper2=LineArray[l].getPosY2()+moveDifference*sin(angle);
         LineArray[l].setPosY2(helper2);
         LineArray[l].draw();
-
         if(helper1>windowWidth1){
             LineArray[l].setPosX1(0);
             LineArray[l].setPosX2(0+LineArray[l].getLength());
         }
-    }
+            }
+        }
 
     //stroke(0,0,0);
     //strokeWeight(100);
     //line(100,100,100+distance,2000);
-    distance=distance+1;
 
     // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
     let fps = frameRate();
@@ -298,7 +330,7 @@ function draw() {
 
     };
 
-
+    backgroundReset=false;
 
 
         //noLoop()
@@ -350,13 +382,27 @@ function keyPressed() {
         if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}*/
 
     //38 ist lift fährt rauf
-    if (keyCode === 38){move=-1} ;
+    if (keyCode === 38){
+        move=-1;
+        reset=false;
+        //Wir säubern den Hintergrund, wenn Bewegung startet
+        backgroundReset=true;
+        }
     //40 ist lift fährt runter
-    if (keyCode === 40)move=+1;
+    if (keyCode === 40){
+        move=+1;
+        //Wir säubern den Hintergrund, wenn Bewegung startet
+        backgroundReset=true;
+        reset=false;}
     //console.log(keyCode);
    // if (keyCode === 32){reset=true;}
     if (keyCode === 32){
         move=0;
+        //reset=true;
+        start=true;
+        reset=true;
+        moveDifference=1;
+        backgroundReset=true;
     }
 }
 
