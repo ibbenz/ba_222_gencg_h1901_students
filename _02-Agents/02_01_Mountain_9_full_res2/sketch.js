@@ -166,12 +166,10 @@ function draw() {
             //console.log("oldtempPeak:" + mountains[l].getPeakPoints());
             //Wir erstellen die zufälligen Verschiebungswerte der Peakpoints jedes Mountain.
 
-/*
+            //nach einer gewissen Zeitspanne wird das Temporary Wave erneut berechnet
             if((timestamp()-peakTime)>peakUpdate){
                 temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
-                peakTime=timestamp();
             }
-*/
 
 
             //console.log("tempWave first:" + temporaryWave[k]);
@@ -180,11 +178,14 @@ function draw() {
             temporaryWaveCounter[l] = temporaryWave[l] / 500;
             for (let m = 1; m <= (options.numberOfPeaks-2); m++) {
                 //console.log("tempWave:" + temporaryWave[l]);
-                //console.log("tempPeak:" + temporaryPeakPoints[m]);
+
 
                 //Damit die neuen Punkte nicht über das Fenster hinauslappen:
                 if (((temporaryPeakPoints[m].x + temporaryWave[l]) < windowWidth1) && ((temporaryPeakPoints[m].x + temporaryWave[l]) > 0)) {
                     temporaryPeakPoints[m] = createVector(temporaryPeakPoints[m].x + temporaryWaveCounter[l], temporaryPeakPoints[m].y);
+                    console.log("tempfPeak:" + temporaryPeakPoints[m]);
+                    console.log("tempwavecount:" + temporaryWaveCounter[l]);
+                    console.log("tempWave:" + temporaryWave[l]);
                 }
             }
 
@@ -214,7 +215,9 @@ function draw() {
             mountains[l].setMountainPoints(temporaryMountainPoints);
         }
 
-
+        if((timestamp()-peakTime)>peakUpdate){
+           peakTime=timestamp();
+        }
 
         //console.log("Temp Mountain Points Out1: "+mountains[0].getmountainPoints());
         //Die neu positionierten Peaks werden verbunden
