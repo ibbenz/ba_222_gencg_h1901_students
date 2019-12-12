@@ -48,6 +48,8 @@ var start;
 var timeDiff;
 var temporaryPeakPoints;
 var temporaryMountainPoints;
+var peakUpdate;
+var peakTime;
 
 
 
@@ -63,9 +65,12 @@ function setup() {
   // Detect screen density (retina)
   var density = displayDensity();
   oldtime=timestamp();
+  peakTime=timestamp();
   start=false;
   reset=false;
   runTime=6000;
+  //Wenn die neue Peakposition angepasst wird.
+  peakUpdate=1000;
   pixelDensity(density);
   mountains= new Array(options.numberOfMountains);
     for (let j = 0; j <= options.numberOfMountains; j++) {
@@ -160,7 +165,13 @@ function draw() {
             temporaryPeakPoints = mountains[l].getPeakPoints();
             //console.log("oldtempPeak:" + mountains[l].getPeakPoints());
             //Wir erstellen die zufälligen Verschiebungswerte der Peakpoints jedes Mountain.
-            temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
+
+            if((timestamp()-peakTime)>peakUpdate){
+                temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
+                peakTime=timestamp();
+            }
+
+
             //console.log("tempWave first:" + temporaryWave[k]);
             //Innerhalb von 1000 Frames wird die Verschiebung umgesetzt.
             //Wollen wir eine höhere Geschwindigkeit so reduzieren wir die Framenummer
@@ -168,6 +179,8 @@ function draw() {
             for (let m = 0; m <= options.numberOfPeaks; m++) {
                 //console.log("tempWave:" + temporaryWave[l]);
                 //console.log("tempPeak:" + temporaryPeakPoints[m]);
+
+                //Damit die neuen Punkte nicht über das Fenster hinauslappen:
                 if (((temporaryPeakPoints[m].x + temporaryWave[l]) < windowWidth1) && ((temporaryPeakPoints[m].x + temporaryWave[l]) > 0)) {
                     temporaryPeakPoints[m] = createVector(temporaryPeakPoints[m].x + temporaryWaveCounter[l], temporaryPeakPoints[m].y);
                 }
