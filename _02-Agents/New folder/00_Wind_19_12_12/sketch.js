@@ -27,9 +27,6 @@ let reset=false;
 let start;
 let resetTime;
 let resetTrigger;
-
-//Bewirkt dass Winkel nach start nicht wieder auf genau 0 zurückgeht.
-let noiseAngle;
 //Bereinigen des Backgrounds
 let backgroundReset;
 
@@ -89,7 +86,6 @@ function setup() {
   backgroundReset=false;
   LineArray=[];
   rotateAngleDeg=45;
-  noiseAngle=0.01;
 
   //Winkel der Linie;
   angle=0;
@@ -205,11 +201,11 @@ function draw() {
             //erst nach einem Reset ist diese wieder OK.
             moveDifference=3;
             if(anglecounter<0){
-                angle=angle-(rotateAngleDeg*2*PI/360)-noiseAngle;
+                angle=angle-(rotateAngleDeg*2*PI/360);
                 anglecounter++;}
 
             if(anglecounter>0){
-                angle=angle+(rotateAngleDeg*2*PI/360)+noiseAngle;
+                angle=angle+(rotateAngleDeg*2*PI/360);
                 anglecounter--;}
 
             if(anglecounter==0){
