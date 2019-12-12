@@ -255,7 +255,7 @@ class mountainElement {
 
     this.getiterationDepth = function() { return _iterationDepth; }
 
-    this.getMountainPoints = function() { return mountainPoints; }
+    this.getmountainPoints = function() { return mountainPoints; }
 
     this.setPeaks = function(peaks) { _peaks = peaks; }
 
