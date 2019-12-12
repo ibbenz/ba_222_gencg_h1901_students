@@ -169,6 +169,7 @@ function draw() {
             //nach einer gewissen Zeitspanne wird das Temporary Wave erneut berechnet
             if((timestamp()-peakTime)>peakUpdate){
                 temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
+                console.log("update:" + temporaryWave[l]);
             }
 
 
@@ -216,7 +217,8 @@ function draw() {
         }
 
         if((timestamp()-peakTime)>peakUpdate){
-           peakTime=timestamp();
+            console.log("hier");
+            peakTime=timestamp();
         }
 
         //console.log("Temp Mountain Points Out1: "+mountains[0].getmountainPoints());
