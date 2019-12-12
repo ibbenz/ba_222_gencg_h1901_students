@@ -166,10 +166,12 @@ function draw() {
             //console.log("oldtempPeak:" + mountains[l].getPeakPoints());
             //Wir erstellen die zufälligen Verschiebungswerte der Peakpoints jedes Mountain.
 
+/*
             if((timestamp()-peakTime)>peakUpdate){
                 temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
                 peakTime=timestamp();
             }
+*/
 
 
             //console.log("tempWave first:" + temporaryWave[k]);
@@ -255,7 +257,7 @@ class mountainElement {
 
     this.getiterationDepth = function() { return _iterationDepth; }
 
-    this.getmountainPoints = function() { return mountainPoints; } 
+    this.getmountainPoints = function() { return mountainPoints; }
 
     this.setPeaks = function(peaks) { _peaks = peaks; }
 
