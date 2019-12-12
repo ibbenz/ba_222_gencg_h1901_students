@@ -95,7 +95,7 @@ function setup() {
 function draw() {
 
 
-    console.log("Start: "+start);
+
 
     //Berg-Bewegung zurücksetzen, falls diese länger als 3 Sekunden dauert.
 
@@ -163,8 +163,7 @@ function draw() {
             temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
             //console.log("tempWave first:" + temporaryWave[k]);
             //Innerhalb von 1000 Frames wird die Verschiebung umgesetzt.
-            //Wollen wir eine höhere Geschwindigkeit so reduzieren wir die Framenummer
-            temporaryWaveCounter[l] = temporaryWave[l] / 500;
+            temporaryWaveCounter[l] = temporaryWave[l] / 1000;
             for (let m = 0; m <= options.numberOfPeaks; m++) {
                 //console.log("tempWave:" + temporaryWave[l]);
                 //console.log("tempPeak:" + temporaryPeakPoints[m]);
@@ -331,8 +330,7 @@ function keyPressed() {
     //console.log(keyCode);
 
     if (keyCode === 32){
-        if(start==false){ start=true;}
-        else if(start==true){start=false;};
+        start=true;
         reset=false;
         moveMountain=0;
         oldtime=timestamp();}
