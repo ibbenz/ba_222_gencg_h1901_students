@@ -150,7 +150,7 @@ function draw() {
         //Nachdem der Lift ein wenig gefahren ist, setzen wir die Bewegung aus.
         if((timeDiff>runTime)&&(moveMountain!=0)){
             moveMountain=0;
-            console.log("Move Mountain 2: " + moveMountain);
+            //console.log("Move Mountain 2: " + moveMountain);
         }
 
 
@@ -183,9 +183,9 @@ function draw() {
                 //Damit die neuen Punkte nicht über das Fenster hinauslappen:
                 if (((temporaryPeakPoints[m].x + temporaryWave[l]) < windowWidth1) && ((temporaryPeakPoints[m].x + temporaryWave[l]) > 0)) {
                     temporaryPeakPoints[m] = createVector(temporaryPeakPoints[m].x + temporaryWaveCounter[l], temporaryPeakPoints[m].y);
-                    console.log("tempfPeak:" + temporaryPeakPoints[m]);
-                    console.log("tempwavecount:" + temporaryWaveCounter[l]);
-                    console.log("tempWave:" + temporaryWave[l]);
+                    //console.log("tempfPeak:" + temporaryPeakPoints[m]);
+                    //console.log("tempwavecount:" + temporaryWaveCounter[l]);
+                    //console.log("tempWave:" + temporaryWave[l]);
                 }
             }
 
