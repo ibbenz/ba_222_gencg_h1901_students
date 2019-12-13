@@ -132,7 +132,7 @@ function draw() {
             //Wir machen die Mountains deutlich breiter als die Canvas, so können wir die Peaks innerhalb der
             //Canvas leicht verschieben, ohne auf die Grösse des Arrays zu achten.
             //constructor(peaks,height,width,iterationDepth)
-            mountains[j] = new mountainElement(options.numberOfPeaks, (windowHeight1 / (options.numberOfMountains+1)) * j, windowWidth1, 1);
+            mountains[j] = new mountainElement(options.numberOfPeaks, (2*windowHeight1 / (options.numberOfMountains+1)) * j, 1.5*windowWidth1, 1);
             temporaryWave[j] = 0;
             temporaryWaveCounter[j] = 0;
         }
