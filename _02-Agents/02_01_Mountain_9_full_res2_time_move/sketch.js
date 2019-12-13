@@ -15,7 +15,7 @@ var options = {
 //W: Up
 //A: Down
 //S: Edit
-//D: Run
+//D: Run 
 
 
 //Eingabe der  Mountains evtl. über UI machen.
