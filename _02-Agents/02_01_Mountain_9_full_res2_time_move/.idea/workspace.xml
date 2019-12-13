@@ -335,12 +335,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="232" />
+          <entry key="js" value="234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="232" />
+          <entry key="JavaScript" value="234" />
         </counts>
       </usages-collector>
     </session>
@@ -356,20 +356,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gui.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+              <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="17">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -421,8 +421,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gui.js" />
         <option value="$PROJECT_DIR$/sketch.js" />
+        <option value="$PROJECT_DIR$/gui.js" />
       </list>
     </option>
   </component>
@@ -433,8 +433,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="170" />
-    <option name="y" value="27" />
+    <option name="x" value="2272" />
+    <option name="y" value="502" />
     <option name="width" value="3280" />
     <option name="height" value="1850" />
   </component>
@@ -448,8 +448,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="02_01_Mountain_9_full_res2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="02_01_Mountain_9_full_res2" type="462c0819:PsiDirectoryNode" />
+              <item name="02_01_Mountain_9_full_res2_time_move" type="b2602c69:ProjectViewProjectNode" />
+              <item name="02_01_Mountain_9_full_res2_time_move" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -516,15 +516,15 @@
       <workItem from="1576227203250" duration="2037000" />
       <workItem from="1576241480966" duration="3386000" />
       <workItem from="1576258756998" duration="1799000" />
-      <workItem from="1576261294303" duration="4588000" />
+      <workItem from="1576261294303" duration="5076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104246000" />
+    <option name="totallyTimeSpent" value="104734000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="11" width="1312" height="740" extended-state="0" />
+    <frame x="607" y="53" width="1312" height="740" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13625686" />
@@ -556,13 +556,6 @@
     <entry file="file://$PROJECT_DIR$/index.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -572,8 +565,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="17">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
         </state>
       </provider>
     </entry>
