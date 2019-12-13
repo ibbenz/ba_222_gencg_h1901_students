@@ -19,6 +19,7 @@ var options = {
 
 
 //Eingabe der  Mountains evtl. über UI machen.
+6480
 
 //var numberOfPoints=3240; //Mit Anfangs- und Endpunkt.
 var numberOfPoints=40; //Mit Anfangs- und Endpunkt.
@@ -132,7 +133,7 @@ function draw() {
             //Wir machen die Mountains deutlich breiter als die Canvas, so können wir die Peaks innerhalb der
             //Canvas leicht verschieben, ohne auf die Grösse des Arrays zu achten.
             //constructor(peaks,height,width,iterationDepth)
-            mountains[j] = new mountainElement(options.numberOfPeaks, (2*windowHeight1 / (options.numberOfMountains+1)) * j, 1.7*windowWidth1, 1);
+            mountains[j] = new mountainElement(options.numberOfPeaks, (2.5*windowHeight1 / (options.numberOfMountains+1)) * j, 1.0*windowWidth1, 1);
             temporaryWave[j] = 0;
             temporaryWaveCounter[j] = 0;
         }
