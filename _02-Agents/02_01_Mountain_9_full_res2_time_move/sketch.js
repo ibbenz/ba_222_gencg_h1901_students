@@ -79,7 +79,7 @@ function setup() {
   mountains= new Array(options.numberOfMountains);
     for (let j = 0; j <= options.numberOfMountains; j++) {
         //(peaks,height,width,iterationDepth){
-        mountains[j]=new mountainElement(options.numberOfPeaks,(2*windowHeight1 / options.numberOfMountains) * j,1.0*windowWidth1,1);
+        mountains[j]=new mountainElement(options.numberOfPeaks,(2.5*windowHeight1 / options.numberOfMountains) * j,1.0*windowWidth1,1);
         temporaryWave[j]=0;
         temporaryWaveCounter[j]=0;
     }
