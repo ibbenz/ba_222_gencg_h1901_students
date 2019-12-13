@@ -13,4 +13,4 @@ window.onload = function() {
     gui.add(options, 'numberOfPeaks').min(0).max(50).step(1);
     gui.add(options, 'opacity').min(0).max(255).step(1);
     gui.add(options, 'colorShade').min(0).max(255).step(1);
-};*/
+};  */
