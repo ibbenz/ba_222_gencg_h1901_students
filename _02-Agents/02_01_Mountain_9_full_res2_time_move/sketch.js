@@ -104,7 +104,7 @@ function setup() {
 function draw() {
 
 
-    console.log("Start: "+start);
+    //console.log("Start: "+start);
 
     //Berg-Bewegung zurücksetzen, falls diese länger als 3 Sekunden dauert.
 
@@ -132,7 +132,7 @@ function draw() {
             //Wir machen die Mountains deutlich breiter als die Canvas, so können wir die Peaks innerhalb der
             //Canvas leicht verschieben, ohne auf die Grösse des Arrays zu achten.
             //constructor(peaks,height,width,iterationDepth)
-            mountains[j] = new mountainElement(options.numberOfPeaks, (2*windowHeight1 / (options.numberOfMountains+1)) * j, 1.5*windowWidth1, 1);
+            mountains[j] = new mountainElement(options.numberOfPeaks, (windowHeight1 / (options.numberOfMountains+1)) * j, *windowWidth1, 1);
             temporaryWave[j] = 0;
             temporaryWaveCounter[j] = 0;
         }
@@ -185,7 +185,7 @@ function draw() {
             //nach einer gewissen Zeitspanne wird das Temporary Wave erneut berechnet
             if((timestamp()-peakTime)>peakUpdate){
                 temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
-                console.log("update:" + temporaryWave[l]);
+                //console.log("update:" + temporaryWave[l]);
             }
 
 
@@ -233,7 +233,7 @@ function draw() {
         }
 
         if((timestamp()-peakTime)>peakUpdate){
-            console.log("hier");
+            //console.log("hier");
             peakTime=timestamp();
         }
 
