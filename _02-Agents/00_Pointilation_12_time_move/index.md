@@ -1,6 +1,6 @@
 ---
 layout: sketch
-title: "Pointilation" 
+title: "Pointilation Time Move" 
 category: "Experiment" 
 thumb_name: "thumb.jpg"
 includes:

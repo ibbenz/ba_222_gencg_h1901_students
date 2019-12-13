@@ -1,6 +1,6 @@
 ---
 layout: sketch
-title: "Wind" 
+title: "Wind Time Move" 
 category: "Experiment" 
 thumb_name: "thumb.jpg"
 includes:
