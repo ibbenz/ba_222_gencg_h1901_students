@@ -123,7 +123,7 @@ function draw() {
     }
 
 
-    //*******************************
+    //*******************************d
     if (start == false) {
         timeDiff=0;
         mountains = new Array(options.numberOfMountains);
