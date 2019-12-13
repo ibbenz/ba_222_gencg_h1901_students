@@ -27,9 +27,6 @@ let reset=false;
 let start;
 let resetTime;
 let resetTrigger;
-
-//Bewirkt dass Winkel nach start nicht wieder auf genau 0 zurückgeht.
-let noiseAngle;
 //Bereinigen des Backgrounds
 let backgroundReset;
 
@@ -51,6 +48,10 @@ let verticalDivisions;
 let repetitionLine;
 //Zeitlicher Abstand in dem dieses gleichzeitige Zeichnen geschieht
 let repetitionTime;
+
+//Wenn wir das Programm nicht durch Tastendruck,
+//sondern als zeitliche Abfolge Programmieren.
+let timeDriver;
 
 
 
@@ -89,7 +90,8 @@ function setup() {
   backgroundReset=false;
   LineArray=[];
   rotateAngleDeg=45;
-  noiseAngle=0.01;
+  timeDriver=0;
+
 
   //Winkel der Linie;
   angle=0;
@@ -148,6 +150,19 @@ function draw() {
     }
 
 
+    //Wenn wir die Liftfahrt nicht über die Tasten steuern, sondern als Zeit nach dem Pressen des Space-key:
+    if((start==true)&&(timeDriver==0)){
+        timeDriver=timestamp();
+    }else if(((timestamp()-timeDriver)>=3000)&&((timestamp()-timeDriver)<4000)){
+        //Es soll eine Aufwärtsbewegung sein:
+        console.log("move1: "+move);
+        move=+1;
+        //Wir säubern den Hintergrund, wenn Bewegung startet
+        backgroundReset=true;
+        reset=false;
+    }
+
+    console.log("timestamp - timedriver2 "+(timestamp()-timeDriver));
 
     //Hier zeichnen wir die Linien immer und immer wieder, wenn das reset true ist.
     //Dies wird deaktiviert, sobald eine Bewegung stattfindet.
@@ -201,15 +216,18 @@ function draw() {
     switch(move){
 
         case 0:
+            //Hier drehen wir die bei 1 und -1 gesteigerten Winkel wieder zurück.
             //Wird nach einer Bewegung wieder 0, dann setzen wir die Move-Difference hoch
             //erst nach einem Reset ist diese wieder OK.
+            //Damit Winkel nach dem Zurückdrehen nicht wieder am gleichen Ort landet,
+            //addieren/subtrahieren wir jeweils 0.1.
             moveDifference=3;
             if(anglecounter<0){
-                angle=angle-(rotateAngleDeg*2*PI/360)-noiseAngle;
+                angle=angle-(rotateAngleDeg*2*PI/360)-0.1;
                 anglecounter++;}
 
             if(anglecounter>0){
-                angle=angle+(rotateAngleDeg*2*PI/360)+noiseAngle;
+                angle=angle+(rotateAngleDeg*2*PI/360)+0.1;
                 anglecounter--;}
 
             if(anglecounter==0){
@@ -272,9 +290,11 @@ function draw() {
         console.log("move:"+move);
 
         //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
+        //Heisst, Winkel dreht sich dann zurück.
         if((resetTrigger==true)&&((timestamp()-resetTime)>1000)){
             resetTime=timestamp();
             resetTrigger=false;
+            console.log("Hier");
             move=0;
         }
 

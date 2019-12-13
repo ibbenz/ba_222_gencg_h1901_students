@@ -51,6 +51,9 @@ var temporaryMountainPoints;
 var peakUpdate;
 var peakTime;
 
+//Falls Bewegung nicht über hoch/tief-Taste gesteuert wird, sondern über Zeitabstand.
+var timeDriver;
+
 
 
 //Um die Spitzen bewegen zu können;
@@ -68,6 +71,7 @@ function setup() {
   peakTime=timestamp();
   start=false;
   reset=false;
+  timeDriver=0;
   runTime=6000;
   //Wenn die neue Peakposition angepasst wird.
   peakUpdate=1000;
@@ -104,7 +108,19 @@ function draw() {
 
     //Berg-Bewegung zurücksetzen, falls diese länger als 3 Sekunden dauert.
 
-
+    //Wenn wir die Liftfahrt nicht über die Tasten steuern, sondern als Zeit nach dem Pressen des Space-key:
+    if((start==true)&&(timeDriver==0)){
+        timeDriver=timestamp();
+        //console.log("Hallo");
+    }else if(((timestamp()-timeDriver)>=3000)&&((timestamp()-timeDriver)<4000)&&(start==true)){
+        //Es soll eine Aufwärtsbewegung sein:
+        //console.log("move1: "+move);
+        moveMountain=+diffMountain;
+        oldtime=timestamp();
+        //Wir säubern den Hintergrund, wenn Bewegung startet
+    }else if((timestamp()-timeDriver)>6000){
+        moveMountain=+diffMountain;
+    }
 
 
     //*******************************
@@ -347,12 +363,14 @@ function keyPressed() {
 
     //38 ist lift fährt rauf
     if (keyCode === 38){
-        moveMountain=-diffMountain;
-        oldtime=timestamp();} ;
+        //moveMountain=-diffMountain;
+        //oldtime=timestamp();
+        } ;
     //40 ist lift fährt runter
     if (keyCode === 40){
-        moveMountain=+diffMountain;
-        oldtime=timestamp();}
+        //moveMountain=+diffMountain;
+        //oldtime=timestamp();
+        }
     //console.log(keyCode);
 
     if (keyCode === 32){
@@ -360,7 +378,8 @@ function keyPressed() {
         else if(start==true){start=false;};
         reset=false;
         moveMountain=0;
-        oldtime=timestamp();}
+        oldtime=timestamp();
+        timeDriver=0;}
 }
 
 function keyReleased() {

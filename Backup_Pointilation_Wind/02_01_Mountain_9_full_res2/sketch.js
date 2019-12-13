@@ -48,6 +48,8 @@ var start;
 var timeDiff;
 var temporaryPeakPoints;
 var temporaryMountainPoints;
+var peakUpdate;
+var peakTime;
 
 
 
@@ -63,14 +65,17 @@ function setup() {
   // Detect screen density (retina)
   var density = displayDensity();
   oldtime=timestamp();
+  peakTime=timestamp();
   start=false;
   reset=false;
   runTime=6000;
+  //Wenn die neue Peakposition angepasst wird.
+  peakUpdate=1000;
   pixelDensity(density);
   mountains= new Array(options.numberOfMountains);
     for (let j = 0; j <= options.numberOfMountains; j++) {
         //(peaks,height,width,iterationDepth){
-        mountains[j]=new mountainElement(options.numberOfPeaks,(windowHeight1 / options.numberOfMountains) * j,windowWidth1,1);
+        mountains[j]=new mountainElement(options.numberOfPeaks,(2*windowHeight1 / options.numberOfMountains) * j,1.5*windowWidth1,1);
         temporaryWave[j]=0;
         temporaryWaveCounter[j]=0;
     }
@@ -95,7 +100,7 @@ function setup() {
 function draw() {
 
 
-
+    console.log("Start: "+start);
 
     //Berg-Bewegung zurücksetzen, falls diese länger als 3 Sekunden dauert.
 
@@ -111,7 +116,7 @@ function draw() {
             //Wir machen die Mountains deutlich breiter als die Canvas, so können wir die Peaks innerhalb der
             //Canvas leicht verschieben, ohne auf die Grösse des Arrays zu achten.
             //constructor(peaks,height,width,iterationDepth)
-            mountains[j] = new mountainElement(options.numberOfPeaks, (windowHeight1 / (options.numberOfMountains+1)) * j, windowWidth1, 1);
+            mountains[j] = new mountainElement(options.numberOfPeaks, (2*windowHeight1 / (options.numberOfMountains+1)) * j, 1.5*windowWidth1, 1);
             temporaryWave[j] = 0;
             temporaryWaveCounter[j] = 0;
         }
@@ -145,7 +150,7 @@ function draw() {
         //Nachdem der Lift ein wenig gefahren ist, setzen wir die Bewegung aus.
         if((timeDiff>runTime)&&(moveMountain!=0)){
             moveMountain=0;
-            console.log("Move Mountain 2: " + moveMountain);
+            //console.log("Move Mountain 2: " + moveMountain);
         }
 
 
@@ -160,15 +165,28 @@ function draw() {
             temporaryPeakPoints = mountains[l].getPeakPoints();
             //console.log("oldtempPeak:" + mountains[l].getPeakPoints());
             //Wir erstellen die zufälligen Verschiebungswerte der Peakpoints jedes Mountain.
-            temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
+
+            //nach einer gewissen Zeitspanne wird das Temporary Wave erneut berechnet
+            if((timestamp()-peakTime)>peakUpdate){
+                temporaryWave[l] = toInt(random(-windowWidth1, windowWidth1));
+                console.log("update:" + temporaryWave[l]);
+            }
+
+
             //console.log("tempWave first:" + temporaryWave[k]);
             //Innerhalb von 1000 Frames wird die Verschiebung umgesetzt.
-            temporaryWaveCounter[l] = temporaryWave[l] / 1000;
-            for (let m = 0; m <= options.numberOfPeaks; m++) {
+            //Wollen wir eine höhere Geschwindigkeit so reduzieren wir die Framenummer
+            temporaryWaveCounter[l] = temporaryWave[l] / 500;
+            for (let m = 1; m <= (options.numberOfPeaks-2); m++) {
                 //console.log("tempWave:" + temporaryWave[l]);
-                //console.log("tempPeak:" + temporaryPeakPoints[m]);
+
+
+                //Damit die neuen Punkte nicht über das Fenster hinauslappen:
                 if (((temporaryPeakPoints[m].x + temporaryWave[l]) < windowWidth1) && ((temporaryPeakPoints[m].x + temporaryWave[l]) > 0)) {
                     temporaryPeakPoints[m] = createVector(temporaryPeakPoints[m].x + temporaryWaveCounter[l], temporaryPeakPoints[m].y);
+                    //console.log("tempfPeak:" + temporaryPeakPoints[m]);
+                    //console.log("tempwavecount:" + temporaryWaveCounter[l]);
+                    //console.log("tempWave:" + temporaryWave[l]);
                 }
             }
 
@@ -198,7 +216,10 @@ function draw() {
             mountains[l].setMountainPoints(temporaryMountainPoints);
         }
 
-
+        if((timestamp()-peakTime)>peakUpdate){
+            console.log("hier");
+            peakTime=timestamp();
+        }
 
         //console.log("Temp Mountain Points Out1: "+mountains[0].getmountainPoints());
         //Die neu positionierten Peaks werden verbunden
@@ -273,8 +294,10 @@ class mountainElement {
       //Ich entscheide mich dafür bei der "blau-gelben"-Farbskala zu bleiben.
       colorMountain=createVector(toInt(random(0,255)),options.colorShade,toInt(random(0,255)),options.opacity);
 
+      //Die Randpunkte sollen fixiert werden:
+      peakPoints[0]=createVector(mountainPoints[0].x,mountainPoints[0].y);
       //Wir setzen die Peaks der Berge
-      for (let j = 0; j <= (peaks); j++) {
+      for (let j = 1; j <= (peaks-1); j++) {
           let point=toInt(random(1,(numberOfPoints-2)));
           //console.log("randomnumber: "+point)
           //Die Peakpoints erhalten die doppelte Menge der Punkte. Nämlich auch die gespiegelten.
@@ -282,6 +305,9 @@ class mountainElement {
           peakPoints[j]=createVector(mountainPoints[point].x,mountainPoints[point].y);
           //console.log("Peak Point: "+peakPoints[j]);
       }
+      peakPoints[peaks]=createVector(mountainPoints[numberOfPoints-1].x,mountainPoints[numberOfPoints-1].y);
+
+
 
       peakPoints.sort(compareVectors);
 
@@ -330,7 +356,8 @@ function keyPressed() {
     //console.log(keyCode);
 
     if (keyCode === 32){
-        start=true;
+        if(start==false){ start=true;}
+        else if(start==true){start=false;};
         reset=false;
         moveMountain=0;
         oldtime=timestamp();}
