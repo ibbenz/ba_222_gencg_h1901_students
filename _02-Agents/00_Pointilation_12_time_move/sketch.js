@@ -248,13 +248,13 @@ function draw() {
 
             if(move<(-0.1)){
                 //console.log("Hier1");
-                elevatorScaler=elevatorScaler*0.999;
+                elevatorScaler=elevatorScaler*0.9995;
                 //rectPosY=random(windowHeight1-elevatorScaler,0.7*windowHeight1);
                 rectPosY=random(elevatorCenter+(elevatorCenter-elevatorScaler),elevatorCenter+(elevatorCenter-elevatorScaler)+stripeWidth);
                 moveOld=move;
             } else if(move>(0.1)){
                 //console.log("Hier2");
-                elevatorScaler=elevatorScaler*0.999;
+                elevatorScaler=elevatorScaler*0.9995;
                 rectPosY=random(elevatorScaler,elevatorScaler-stripeWidth);
                 moveOld=move;
 
@@ -262,7 +262,7 @@ function draw() {
                 //Wenn der Move-Zyklus abgeschlossen ist, soll der Streifen wieder zurückwandern.
                 //console.log("Hier3");
                 if(elevatorScaler<elevatorCenter){
-                    elevatorScaler=elevatorScaler*1.002;
+                    elevatorScaler=elevatorScaler*1.0005;
                 }else{
                     elevatorScaler=elevatorCenter;
                 }
