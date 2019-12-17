@@ -40,7 +40,9 @@ All the info regarding the class as well as direct links to all materials (slide
 # _03-Benz_Pascal_Agent_Projects
 This collection holds the final project versions created during the Generative Computing Module.
 The projects were made with the intention to create a part of an entertainment system for a elevator.
-The works create animated generative pictures which will enlighten the wall of the elevator
+The works create animated generative pictures which will enlighten the wall of the elevator.
+
+The interactive modus of these projects can be activated by the Space-key.
 
 # Project 1: Mountains
 Originally it was intended to create the silouette of a mountain landscape. During the process of creation 
