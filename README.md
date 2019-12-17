@@ -47,3 +47,13 @@ Originally it was intended to create the silouette of a mountain landscape. Duri
 the work transformed into a kind of stained glass windows of a church, which looks best in a spherical projection on the lift walls.
 The change of idea led to a not perfectly well code. Instead of creating the whole project from scratch again, the autor decided to 
 invest his energy in two other projects. 
+
+![Mountain](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Mountain_small.png "Mountain")
+The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Mountains_fast.mp4
+
+# Project 1: Pixelation
+The origin idea was to create a kind of 3D-Cubes made with two squares and four edges. By the variation of the edges and squares a new shape emerged. It consists of four dots variing in diameter and orientation. An overlay of such elements colored in red, blue and green gives the appearance of a rope or even the texture of Pointillism Artwork. The latter gave this project finally its name.
+
+![Pointillism](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation_Pic.jpg "Pointillism")
+The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation.mp4
+
