@@ -35,3 +35,15 @@ All examples should be placed in the corresponding **collection** folder. To cre
 All the info regarding the class as well as direct links to all materials (slides, notebooks, examples, etc... ) are accessible via the github pages for this repository:
 
 **[https://digitalideation.github.io/ba_222_gencg_h1901/](https://digitalideation.github.io/ba_222_gencg_h1901/)**
+
+
+# _03-Benz_Pascal_Agent_Projects
+This collection holds the final project versions created during the Generative Computing Module.
+The projects were made with the intention to create a part of an entertainment system for a elevator.
+The works create animated generative pictures which will enlighten the wall of the elevator
+
+# Project 1: Mountains
+Originally it was intended to create the silouette of a mountain landscape. During the process of creation 
+the work transformed into a kind of stained glass windows of a church, which looks best in a spherical projection on the lift walls.
+The change of idea led to a not perfectly well code. Instead of creating the whole project from scratch again, the autor decided to 
+invest his energy in two other projects. 
