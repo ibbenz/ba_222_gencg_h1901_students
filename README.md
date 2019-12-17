@@ -58,7 +58,7 @@ The origin idea was to create a kind of 3D-Cubes made with two squares and four 
 The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation.mp4
 
 # Project 1: Wind
-This project was created to produce a certain mood. The first approach was to create just yellow lines on a blue background which will change direction as the elevator changes direction. The movement should be smooth similar to yellow straw blown in wind. Since this approach appeared to simplistic a whole story was developed around this idea. There is a transformation from straw to stars to birds in the sky while the elevator is moving.
+This project was created to produce a certain mood. The first approach was to create just yellow lines on a blue background which will change direction as the elevator changes direction. The movement should be smooth similar to yellow straw blown in wind. Since this approach appeared to simplistic a whole story was developed around this idea. There is a transformation from straw to stars to birds in the sky while the elevator is moving. The birds finally create a feather-like structure.
 
 ![Wind1](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Wind1.png "Wind1")
 ![Wind2](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Wind2.png "Wind2")
