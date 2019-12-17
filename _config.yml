@@ -19,3 +19,6 @@ collections:
     
   02-Agents:
     output: true
+    
+  03-Benz_Pascal_Agent_Projects:
+    output: true
