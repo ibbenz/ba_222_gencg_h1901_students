@@ -33,9 +33,6 @@ let backgroundReset;
 //Winkel, um den die Linie rotiert:
 let rotateAngleDeg;
 
-
-
-
 //X und Y-Position des Startpunktes.
 let YPosition;
 let XPosition;
@@ -53,53 +50,46 @@ let repetitionTime;
 //sondern als zeitliche Abfolge Programmieren.
 let timeDriver;
 
-
-
 function setup() {
-
-  // Canvas setup
-  //canvas = createCanvas(windowWidth1, windowHeight1);
+    // Canvas setup
     canvas = createCanvas(windowWidth1, windowHeight1);
-  canvas.parent("p5Container");
-  // Detect screen density (retina)
-  var density = displayDensity();
-  pixelDensity(density);
-  oldtime=timestamp();
+    canvas.parent("p5Container");
+    // Detect screen density (retina)
+    var density = displayDensity();
+    pixelDensity(density);
+    oldtime=timestamp();
 
-  //backgroundColor= new Array(170,255,245); //Blau
     backgroundColor= new Array(0,0,50); //Blau
     // backgroundColor= new Array(255,255,170); //Gelb
     //backgroundColor= new Array(255,170,255); //Pink
-  background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
-  repetitionLine=options.repetitionLine;
-  repetitionTime=options.repetitionTime;
-  horizontalDivisions=options.horizontalDivisions;
-  verticalDivisions=options.verticalDivisions;
-  randomLineLength_upper=options.randomLineLength_upper;
-  randomLineLength_lower=options.randomLineLength_lower;
-  lineStroke=options.lineStroke;
-  lineLength=100;
-  colorShade=options.colorShade;
-  lineColor=color(255,colorShade,170);
-  anglecounter=0;
-  moveDifference=1;
-  resetTime=0;
-  resetTrigger=false;
-  reset=true;
-  start=false;
-  backgroundReset=false;
-  LineArray=[];
-  rotateAngleDeg=45;
-  timeDriver=0;
+    background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
+    repetitionLine=options.repetitionLine;
+    repetitionTime=options.repetitionTime;
+    horizontalDivisions=options.horizontalDivisions;
+    verticalDivisions=options.verticalDivisions;
+    randomLineLength_upper=options.randomLineLength_upper;
+    randomLineLength_lower=options.randomLineLength_lower;
+    lineStroke=options.lineStroke;
+    lineLength=100;
+    colorShade=options.colorShade;
+    lineColor=color(255,colorShade,170);
+    anglecounter=0;
+    moveDifference=1;
+    resetTime=0;
+    resetTrigger=false;
+    reset=true;
+    start=false;
+    backgroundReset=false;
+    LineArray=[];
+    rotateAngleDeg=45;
+    timeDriver=0;
 
-
-  //Winkel der Linie;
-  angle=0;
-  referenceAngle=0;
-  move=0;
-  //Move der Endpunkte der Linien.
+    //Winkel der Linie;
+    angle=0;
+    referenceAngle=0;
+    move=0;
+    //Move der Endpunkte der Linien.
     move2=0;
-
 
     for(let i=-0.2*windowWidth1; i<(1.2*windowWidth1+1);i=i+windowWidth1/verticalDivisions){
         //X-Position des Startpunktes im Vertikalen Streifen wird festgelegt
@@ -109,30 +99,22 @@ function setup() {
                 //Y-Position des Startpunktes im Quadranten innerhalb des vertikalen Streifens wird festgelegt.
                 YPosition = random(j, j + windowHeight1 / horizontalDivisions);
                 lineLength = random(randomLineLength_lower, randomLineLength_upper);
-                //stroke(255,255,170);
                 //Wir sorgen noch für ein wenig Variation innerhalb des Streifens
                 let variation = random(0, windowWidth1 / verticalDivisions);
-                //let variation=0;
                 if (XPosition + variation < windowWidth1) {
-                LineArray.push(new Line(XPosition + variation, YPosition, XPosition + variation + lineLength, YPosition));
+                    LineArray.push(new Line(XPosition + variation, YPosition, XPosition + variation + lineLength, YPosition));
                 }
             }
         }
     }
-
-
     for(let l=0;l<LineArray.length;l++){
         LineArray[l].draw();
     }
-
-
-  
-
 }
 
+
+
 function draw() {
-
-
     repetitionLine=options.repetitionLine;
     repetitionTime=options.repetitionTime;
     horizontalDivisions=options.horizontalDivisions;
@@ -143,7 +125,7 @@ function draw() {
     colorShade=options.colorShade;
 
     if(backgroundReset==false){
-    background(backgroundColor[0],backgroundColor[1],backgroundColor[2],10);
+        background(backgroundColor[0],backgroundColor[1],backgroundColor[2],10);
     }else{
         background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
         backgroundReset=true;
@@ -155,24 +137,18 @@ function draw() {
         timeDriver=timestamp();
     }else if(((timestamp()-timeDriver)>=3000)&&((timestamp()-timeDriver)<4000)&&(start==true)){
         //Es soll eine Aufwärtsbewegung sein:
-        //console.log("move1: "+move);
         move=+1;
         //Wir säubern den Hintergrund, wenn Bewegung startet
         backgroundReset=true;
         reset=false;
     }
 
-    //console.log("timestamp - timedriver2 "+(timestamp()-timeDriver));
-
     //Hier zeichnen wir die Linien immer und immer wieder, wenn das reset true ist.
     //Dies wird deaktiviert, sobald eine Bewegung stattfindet.
     if(reset==true){
-
         angle=0;
         referenceAngle=0;
         LineArray=[];
-
-
         //Die Linien werden gezeichnet:
         for(let i=-0.2*windowWidth1; i<(1.2*windowWidth1+1);i=i+windowWidth1/verticalDivisions){
             //X-Position des Startpunktes im Vertikalen Streifen wird festgelegt
@@ -182,10 +158,8 @@ function draw() {
                     //Y-Position des Startpunktes im Quadranten innerhalb des vertikalen Streifens wird festgelegt.
                     YPosition = random(j, j + windowHeight1 / horizontalDivisions);
                     lineLength = random(randomLineLength_lower, randomLineLength_upper);
-                    //stroke(255,255,170);
                     //Wir sorgen noch für ein wenig Variation innerhalb des Streifens
                     let variation = random(0, windowWidth1 / verticalDivisions);
-                    //let variation=0;
                     if (XPosition + variation < windowWidth1) {
                         LineArray.push(new Line(XPosition + variation, YPosition, XPosition + variation + lineLength, YPosition));
                     }
@@ -198,97 +172,73 @@ function draw() {
                 LineArray[l].draw();
             }
         }
-
     };
 
 
-
-
     if((timestamp()-oldtime)>1){
+        //Wenn Lift sich bewegt, dreht sich der Winkel um xxx Grad
+        switch(move){
+            case 0:
+                //Hier drehen wir die bei 1 und -1 gesteigerten Winkel wieder zurück.
+                //Wird nach einer Bewegung wieder 0, dann setzen wir die Move-Difference hoch
+                //erst nach einem Reset ist diese wieder OK.
+                //Damit Winkel nach dem Zurückdrehen nicht wieder am gleichen Ort landet,
+                //addieren/subtrahieren wir jeweils 0.1.
+                moveDifference=3;
+                if(anglecounter<0){
+                    angle=angle-(rotateAngleDeg*2*PI/360)-0.1;
+                    anglecounter++;}
 
+                if(anglecounter>0){
+                    angle=angle+(rotateAngleDeg*2*PI/360)+0.1;
+                    anglecounter--;}
 
+                if(anglecounter==0){
+                    //console.log("Hallo");
+                    //Durch den ständigen Wechsel der Winkel gibt es nach der Bewegung diese Vögel.
+                    //Aufgrund der unsauberen Division durch eine Zahl und den Rundungsfehlern??
+                    if(angle>0){
+                        //console.log("redux");
+                        angle=angle-(rotateAngleDeg*2*PI/360);
+                    }else if(angle<0){
+                        //console.log("increase");
+                        angle=angle+(rotateAngleDeg*2*PI/360);
 
-
-    //Wenn Lift sich bewegt, dreht sich der Winkel um xxx Grad
-
-
-
-    switch(move){
-
-        case 0:
-            //Hier drehen wir die bei 1 und -1 gesteigerten Winkel wieder zurück.
-            //Wird nach einer Bewegung wieder 0, dann setzen wir die Move-Difference hoch
-            //erst nach einem Reset ist diese wieder OK.
-            //Damit Winkel nach dem Zurückdrehen nicht wieder am gleichen Ort landet,
-            //addieren/subtrahieren wir jeweils 0.1.
-            moveDifference=3;
-            if(anglecounter<0){
-                angle=angle-(rotateAngleDeg*2*PI/360)-0.1;
-                anglecounter++;}
-
-            if(anglecounter>0){
-                angle=angle+(rotateAngleDeg*2*PI/360)+0.1;
-                anglecounter--;}
-
-            if(anglecounter==0){
-                //console.log("Hallo");
-                //Durch den ständigen Wechsel der Winkel gibt es nach der Bewegung diese Vögel.
-                //Aufgrund der unsauberen Division durch eine Zahl und den Rundungsfehlern??
-                if(angle>0){
-                    //console.log("redux");
-                    angle=angle-(rotateAngleDeg*2*PI/360);
-                }else if(angle<0){
-                    //console.log("increase");
-                    angle=angle+(rotateAngleDeg*2*PI/360);
-
-                }else{
-                    angle=angle
+                    }else{
+                        angle=angle
+                    }
                 }
-            }
-
-                //console.log("Hier1");
-
-            break;
+                break;
 
             //Solange Winkel grosser als -2Pi ist verkleinere ihn.
-        case 1:
-            reset=false;
-            if(angle>(-2*PI)) {
-                angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
-                referenceAngle=referenceAngle+(rotateAngleDeg*2 * PI / 360)
-                //console.log("Hier2");
-                anglecounter=anglecounter-1;
-            }
-
-            break;
-
-
+            case 1:
+                reset=false;
+                if(angle>(-2*PI)) {
+                    angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
+                    referenceAngle=referenceAngle+(rotateAngleDeg*2 * PI / 360)
+                    //console.log("Hier2");
+                    anglecounter=anglecounter-1;
+                }
+                break;
 
             //Solange Winkel kleiner als 2Pi ist, erhöhe ihn
-        case -1:
-            reset=false;
-            if(angle<(2*PI)) {
-                angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
-                referenceAngle=referenceAngle-(rotateAngleDeg*2 * PI / 360)
-                anglecounter=anglecounter+1;
+            case -1:
+                reset=false;
+                if(angle<(2*PI)) {
+                    angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
+                    referenceAngle=referenceAngle-(rotateAngleDeg*2 * PI / 360)
+                    anglecounter=anglecounter+1;
 
-                //console.log("Hier3");
-            }
+                    //console.log("Hier3");
+                }
+                break;
+        }
 
-            break;
-
-
-
-    }
-
-    //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
+        //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
         if((move!=0)&&(resetTrigger==false)){
             resetTime=timestamp();
             resetTrigger=true;
         }
-
-        console.log("move:"+move);
-
         //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
         //Heisst, Winkel dreht sich dann zurück.
         if((resetTrigger==true)&&((timestamp()-resetTime)>1000)){
@@ -298,62 +248,35 @@ function draw() {
             move=0;
         }
 
+        let helper1;
+        let helper2;
 
-    //console.log("Arraylänge: "+LineArray.length);
-
-    //console.log("angle: "+angle);
-
-    let helper1;
-    let helper2;
-
-    //Hier zeichnen wir die Linien.
+        //Hier zeichnen wir die Linien.
         // Dies wird nur getan, wenn wir das Programm gestartet haben.
-    //Hier drehen wir die Linien entsprechend dem vorgegebenen Winkel:
+        //Hier drehen wir die Linien entsprechend dem vorgegebenen Winkel:
 
         if(start==true){
             for(let l=0;l<LineArray.length;l++){
-        helper1=LineArray[l].getPosX1()+moveDifference*cos(angle);
-        LineArray[l].setPosX1(helper1);
-        helper2=LineArray[l].getPosY1()+moveDifference*sin(angle);
-        LineArray[l].setPosY1(helper2);
-        helper2=LineArray[l].getPosX1()+LineArray[l].getLength()*cos(angle)+moveDifference*cos(angle);
-        //helper2=LineArray[l].getPosX2()+moveDifference*cos(angle);
-        LineArray[l].setPosX2(helper2);
-        helper2=LineArray[l].getPosY1()+LineArray[l].getLength()*sin(angle)+moveDifference*sin(angle);
-        //helper2=LineArray[l].getPosY2()+moveDifference*sin(angle);
-        LineArray[l].setPosY2(helper2);
-        LineArray[l].draw();
-        if(helper1>windowWidth1){
-            LineArray[l].setPosX1(0);
-            LineArray[l].setPosX2(0+LineArray[l].getLength());
-        }
+                helper1=LineArray[l].getPosX1()+moveDifference*cos(angle);
+                LineArray[l].setPosX1(helper1);
+                helper2=LineArray[l].getPosY1()+moveDifference*sin(angle);
+                LineArray[l].setPosY1(helper2);
+                helper2=LineArray[l].getPosX1()+LineArray[l].getLength()*cos(angle)+moveDifference*cos(angle);
+                LineArray[l].setPosX2(helper2);
+                helper2=LineArray[l].getPosY1()+LineArray[l].getLength()*sin(angle)+moveDifference*sin(angle);
+                LineArray[l].setPosY2(helper2);
+                LineArray[l].draw();
+                if(helper1>windowWidth1){
+                    LineArray[l].setPosX1(0);
+                    LineArray[l].setPosX2(0+LineArray[l].getLength());
+                }
             }
         }
-
-    //stroke(0,0,0);
-    //strokeWeight(100);
-    //line(100,100,100+distance,2000);
-
-    // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
-    let fps = frameRate();
-    //fill(255);
-    //stroke(0);
-    //text("FPS: " + fps.toFixed(2), 100, 100 - 10);
-    //console.log("Framerate: "+fps.toFixed(2));
-
-
-
-    //Den gesamten Background neu zu zeichnen setzt die Framerate massiv runter
-    //Deshalb nicht regelmässig neu zeichnen.
-
+        //Den gesamten Background neu zu zeichnen setzt die Framerate massiv runter
+        //Deshalb nicht regelmässig neu zeichnen.
         oldtime=timestamp();
-
     };
-
     backgroundReset=false;
-
-
-        //noLoop()
 //Falls Vektor mit Rechtecken voll ist, beginne ihn erneut von vorne zu füllen.
 
 }
@@ -383,12 +306,9 @@ class Line {
             strokeWeight(lineStroke);
             stroke(lineColor);
             line(_posX1,_posY1,_posX2,_posY2);
-            //console.log("draw");
             pop();
         }
     }
-
-
 }
 
 
@@ -397,23 +317,18 @@ function keyPressed() {
     if (key == 'd' || key == 'D') start=false;
 
     //38 ist lift fährt rauf
-    /*    if (key == 'w' ||key == 'W'){moveMountain=-diffMountain;}
-        //40 ist lift fährt runter
-        if (key == 's' ||key == 'S'){moveMountain=+diffMountain;}*/
-
-    //38 ist lift fährt rauf
     if (keyCode === 38){
-/*        move=-1;
-        reset=false;
-        //Wir säubern den Hintergrund, wenn Bewegung startet
-        backgroundReset=true;*/
-        }
+        /*        move=-1;
+                reset=false;
+                //Wir säubern den Hintergrund, wenn Bewegung startet
+                backgroundReset=true;*/
+    }
     //40 ist lift fährt runter
     if (keyCode === 40){
-/*        move=+1;
-        //Wir säubern den Hintergrund, wenn Bewegung startet
-        backgroundReset=true;
-        reset=false;*/}
+        /*        move=+1;
+                //Wir säubern den Hintergrund, wenn Bewegung startet
+                backgroundReset=true;
+                reset=false;*/}
     if (keyCode === 32){
         move=0;
         //reset=true;
@@ -444,23 +359,12 @@ function keyReleased() {
 
 // resize canvas when the window is resized
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight, false);
+    resizeCanvas(windowWidth, windowHeight, false);
 }
 
 // Int conversion
 function toInt(value) {
-  return ~~value;
-}
-
-// Timestamp
-function timestamp() {
-  return Date.now();
-}
-
-// Thumb
-function saveThumb(w, h) {
-  let img = get( width/2-w/2, height/2-h/2, w, h);
-  save(img,'thumb.jpg');
+    return ~~value;
 }
 
 // Timestamp
@@ -468,11 +372,17 @@ function timestamp() {
     return Date.now();
 }
 
+// Thumb
+function saveThumb(w, h) {
+    let img = get( width/2-w/2, height/2-h/2, w, h);
+    save(img,'thumb.jpg');
+}
+
+// Timestamp
+function timestamp() {
+    return Date.now();
+}
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight, false);
-}
-
-function blurrFunction(imagePoints,resolution) {
-
 }

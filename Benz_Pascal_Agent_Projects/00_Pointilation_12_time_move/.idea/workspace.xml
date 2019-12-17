@@ -351,14 +351,33 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1158945426">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="101" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="101" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sketch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="262" column="39" lean-forward="true" selection-start-line="262" selection-start-column="39" selection-end-line="262" selection-end-column="39" />
+            <state relative-caret-position="34">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -436,8 +455,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="660" />
-    <option name="y" value="12" />
+    <option name="x" value="235" />
+    <option name="y" value="140" />
     <option name="width" value="3090" />
     <option name="height" value="1775" />
   </component>
@@ -463,7 +482,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../00_Wind_13_12_19_time_move" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -518,14 +537,15 @@
       <workItem from="1576256781304" duration="2761000" />
       <workItem from="1576260185800" duration="38000" />
       <workItem from="1576288668740" duration="257000" />
+      <workItem from="1576578178280" duration="295000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70428000" />
+    <option name="totallyTimeSpent" value="70723000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="264" y="5" width="1236" height="710" extended-state="0" />
+    <frame x="94" y="56" width="1236" height="710" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16402997" />
@@ -556,8 +576,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="262" column="39" lean-forward="true" selection-start-line="262" selection-start-column="39" selection-end-line="262" selection-end-column="39" />
+        <state relative-caret-position="34">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>
