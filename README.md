@@ -51,9 +51,15 @@ invest his energy in two other projects.
 ![Mountain](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Mountain_small.png "Mountain")
 The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Mountains_fast.mp4
 
-# Project 1: Pixelation
+# Project 2: Pointillation
 The origin idea was to create a kind of 3D-Cubes made with two squares and four edges. By the variation of the edges and squares a new shape emerged. It consists of four dots variing in diameter and orientation. An overlay of such elements colored in red, blue and green gives the appearance of a rope or even the texture of Pointillism Artwork. The latter gave this project finally its name.
 
 ![Pointillism](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation_Pic.jpg "Pointillism")
 The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation.mp4
 
+# Project 1: Wind
+This project was created to produce a certain mood. The first approach was to create just yellow lines on a blue background which will change direction as the elevator changes direction. The movement should be smooth similar to yellow straw blown in wind. Since this approach appeared to simplistic a whole story was developed around this idea. There is a transformation from straw to stars to birds in the sky while the elevator is moving.
+
+![Wind1](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Wind1.png "Wind1")
+![Wind2](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Wind2.png "Wind2")
+The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Wind.mp4
