@@ -52,7 +52,7 @@ invest his energy in two other projects.
 The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Mountains_fast.mp4
 
 # Project 2: Pointillation
-The origin idea was to create a kind of 3D-Cubes made with two squares and four edges. By the variation of the edges and squares a new shape emerged. It consists of four dots variing in diameter and orientation. An overlay of such elements colored in red, blue and green gives the appearance of a rope or even the texture of Pointillism Artwork. The latter gave this project finally its name.
+The origin idea was to create a kind of 3D-Cubes made with two squares and four edges. By the variation of the edges and squares a new shape emerged. It consists of four dots variing in diameter and orientation. An overlay of such elements colored in red, blue and green gives the appearance of a rope or even the texture of Pointillism Artwork. The latter gave this project finally its name. The project is interactive. The elevator movement will dissolve the pointillistic rope which rearanges during the movement and falls back to its original position at the end of the movement.  
 
 ![Pointillism](https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation_Pic.jpg "Pointillism")
 The animation: https://github.com/ibbenz/ba_222_gencg_h1901_students/blob/master/Small_Videos/Pointilation.mp4
