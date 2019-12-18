@@ -1,3 +1,15 @@
+
+var options = {
+    rectangleWidth: 10,
+    rectangleHeight: 10,
+    LowLimitRadius: 10,
+    HighLimitRadius: 5,
+    FaderValue: 10,
+    MixFade: 0.5,
+    //NumberDia: 10,
+};
+
+
 // Global var
 var windowWidth1=6480;
 var windowHeight1=3840;
