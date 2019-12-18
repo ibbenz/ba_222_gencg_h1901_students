@@ -102,16 +102,5 @@ function saveThumb(w, h) {
   let img = get(width / 2 - w / 2, height / 2 - h / 2, w, h);
   save(img, 'thumb.jpg');
 }
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
 
