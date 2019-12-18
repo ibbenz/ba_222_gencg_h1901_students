@@ -93,13 +93,14 @@ function setup() {
     moveDifference=1;
     resetTime=0;
     resetTrigger=false;
-    reset=true;
-    start=false;
-    backgroundReset=false;
     LineArray=[];
     rotateAngleDeg=45;
     timeDriver=0;
-
+	//Damit wird der space-key nicht mehr benötigt
+    start=true;
+    reset=true;
+    moveDifference=1;
+    backgroundReset=true;
     //Winkel der Linie;
     angle=0;
     referenceAngle=0;
