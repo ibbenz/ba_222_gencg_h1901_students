@@ -1,312 +1,357 @@
 
-//GUI-Values
+//GUI
 var options = {
-    rectangleWidth: 10,
-    rectangleHeight: 10,
-    LowLimitRadius: 10,
-    HighLimitRadius: 5,
-    FaderValue: 10,
-    MixFade: 0.5,
+
+    randomLineLength_upper: 100,
+    randomLineLength_lower: 10,
+    horizontalDivisions:    1,
+    verticalDivisions:  20,
+    repetitionLine: 100,
+    repetitionTime: 100,
+    lineStroke: 1,
+    colorShade: 200,
+
     //NumberDia: 10,
 };
-
 
 // Global var
 var windowWidth1=6480;
 var windowHeight1=3840;
+var time;
 var oldtime;
-var rand_rect;
-//Das unterlagerte Rechteck.
-let rand_rect2;
-//
-//Die Farben für das Rechteck.
-var rectColor;
+
 var backgroundColor;
-var mixColor;
-//Wie die Rechtecke als Mischfarbe der Hintergrund
-//und der Vordergrundfarbe gemischt werden.
-var mixRatio;
-//Wie schnell sich die Farbmischung von der Hintergrund zur Vordergrundfarbe bewegt.
-var mixRatioFade;
-var stripeWidth;
 
-//Zeit bei der der Move-Zyklus abgeschlossen ist.
-var moveEndTime;
+//Move der Anfangspunkte der Linien
+let move;
+//Move der Endpunkte der Linien.
+let move2;
+let moveOld=0;
+let moveDifference;
+let randomLineLength_upper;
+let randomLineLength_lower;
 
-var diamondList;
-var numOfDiamonds;
-var opacity;
-var origOpacity=255;
-var elevatorScaler;
-
-//Zentrum der Streifen
-var elevatorCenter;
-//Varianz um den Streifen
-
-//Wie schnell Tropfen ausblassen soll.
-var fader;;
-var backgroundFader=10;
+//Die Dicke gelben Linien
+let lineStroke;
+let lineLength;
+let lineColor;
+let colorShade;
+let angle;
+let referenceAngle;
+let anglecounter;
+let reset=false;
+let start;
 let resetTime;
 let resetTrigger;
+//Bereinigen des Backgrounds
+let backgroundReset;
 
-//Setzt alles wieder auf den Ausgangszustand zurück.
-let reset;
-//Die Diamanten-Variable.
-let diamant;
-let redrawTime=0;
-let reFadeTime=0;
-let reBackgroundTime=0;
-let currentDiamondNumber;
-let counter=0;
-let move=0;
-let moveOld=0;
-let lowRadiusLimit;
-let highRadiusLimit;
+//Winkel, um den die Linie rotiert:
+let rotateAngleDeg;
 
-//Variation der Opacity des untenliegenden Rechteckes
-let randOpacity;
-//Hier berechnen wir die Radien der Ecken.
+//X und Y-Position des Startpunktes.
+let YPosition;
+let XPosition;
+let LineArray;
+//In wieviele Quadranten die Zeichenfläche unterteilt werden soll.
+let horizontalDivisions;
+let verticalDivisions;
 
-let randomSigma;
-//Basis zu der Radius an den Rechteckrändern bestimmt wird.
-let radiusBase;
+//Anzahl Linien die gleichzeitig gezeichnet werden.
+let repetitionLine;
+//Zeitlicher Abstand in dem dieses gleichzeitige Zeichnen geschieht
+let repetitionTime;
 
-//Die Variablen für einen Rechteckstein
-let rectWidth;
-let rectHeight;
-let rectPosX;
-let rectPosY;
-//Das leicht unterlagerte Rechteck
-let shiftRectX;
-let shiftRectY;
-let opacityScale;
+//Wenn wir das Programm nicht durch Tastendruck,
+//sondern als zeitliche Abfolge Programmieren.
 let timeDriver;
 
-
 function setup() {
-
     // Canvas setup
     canvas = createCanvas(windowWidth1, windowHeight1);
     canvas.parent("p5Container");
+    // Detect screen density (retina)
     var density = displayDensity();
-    numOfDiamonds=100;
-    //Dicke der Streifen
-    stripeWidth=100;
-    elevatorCenter=windowHeight1*1/4;
-
-    fader=options.FaderValue;
-    lowRadiusLimit=options.LowLimitRadius;
-    highRadiusLimit=options.HighLimitRadius;
-    rectWidth=options.rectangleWidth;
-    rectHeight=options.rectangleHeight;
-
     pixelDensity(density);
     oldtime=timestamp();
-    backgroundColor= new Array(0,0,0);
-    rectColor=new Array(255,0,0);
-    mixColor=[];
-    mixRatioFade=options.MixFade;
-    mixRatio=1;
+
+    backgroundColor= new Array(0,0,50); //Blau
+    // backgroundColor= new Array(255,255,170); //Gelb
+    //backgroundColor= new Array(255,170,255); //Pink
     background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
-    opacity=origOpacity;
-    opacityScale=0.9;
-    currentDiamondNumber=0;
-    diamondList=new Array(numOfDiamonds);
+    repetitionLine=options.repetitionLine;
+    repetitionTime=options.repetitionTime;
+    horizontalDivisions=options.horizontalDivisions;
+    verticalDivisions=options.verticalDivisions;
+    randomLineLength_upper=options.randomLineLength_upper;
+    randomLineLength_lower=options.randomLineLength_lower;
+    lineStroke=options.lineStroke;
+    lineLength=100;
+    colorShade=options.colorShade;
+    lineColor=color(255,colorShade,170);
+    anglecounter=0;
+    moveDifference=1;
     resetTime=0;
     resetTrigger=false;
-    moveEndTime=timestamp();
-    reset=false;
+    reset=true;
+    start=false;
+    backgroundReset=false;
+    LineArray=[];
+    rotateAngleDeg=45;
     timeDriver=0;
 
-    //Bezierlinien zeichnen um das ganze zu strukturieren.
-    //und zwar zufällig und mit verschiedenen Strokeopacities.
-    redrawTime=timestamp();
-    reFadeTime=timestamp();
-    reBackgroundTime=timestamp();
+    //Winkel der Linie;
+    angle=0;
+    referenceAngle=0;
+    move=0;
+    //Move der Endpunkte der Linien.
+    move2=0;
 
-    mixColor[0]=rectColor[0]*(1-mixRatio)+mixRatio*backgroundColor[0];
-    mixColor[1]=rectColor[1]*(1-mixRatio)+mixRatio*backgroundColor[1];
-    mixColor[2]=rectColor[2]*(1-mixRatio)+mixRatio*backgroundColor[2];
-    mixRatio=mixRatio*mixRatioFade;
+    for(let i=-0.2*windowWidth1; i<(1.2*windowWidth1+1);i=i+windowWidth1/verticalDivisions){
+        //X-Position des Startpunktes im Vertikalen Streifen wird festgelegt
+        XPosition=random(i,i+windowWidth1/verticalDivisions);
+        for(let j=(-windowHeight1/2); j<(3/2*windowHeight1+1);j=j+windowHeight1/horizontalDivisions) {
+            for(let k=0; k<repetitionLine;k++) {
+                //Y-Position des Startpunktes im Quadranten innerhalb des vertikalen Streifens wird festgelegt.
+                YPosition = random(j, j + windowHeight1 / horizontalDivisions);
+                lineLength = random(randomLineLength_lower, randomLineLength_upper);
+                //Wir sorgen noch für ein wenig Variation innerhalb des Streifens
+                let variation = random(0, windowWidth1 / verticalDivisions);
+                if (XPosition + variation < windowWidth1) {
+                    LineArray.push(new Line(XPosition + variation, YPosition, XPosition + variation + lineLength, YPosition));
+                }
+            }
+        }
+    }
+    for(let l=0;l<LineArray.length;l++){
+        LineArray[l].draw();
+    }
 }
 
+
+
 function draw() {
+    repetitionLine=options.repetitionLine;
+    repetitionTime=options.repetitionTime;
+    horizontalDivisions=options.horizontalDivisions;
+    verticalDivisions=options.verticalDivisions;
+    randomLineLength_upper=options.randomLineLength_upper;
+    randomLineLength_lower=options.randomLineLength_lower;
+    lineStroke=options.lineStroke;
+    colorShade=options.colorShade;
 
-    //Updaten der Eingabewerte vom GUI:
-
-    mixRatioFade=options.MixFade;
-    fader=options.FaderValue;
-    lowRadiusLimit=options.LowLimitRadius;
-    highRadiusLimit=options.HighLimitRadius;
-    rectWidth=options.rectangleWidth;
-    rectHeight=options.rectangleHeight;
-    lowRadiusLimit=options.LowLimitRadius;
-    highRadiusLimit=options.HighLimitRadius;
-    rectWidth=options.rectangleWidth;
-    rectHeight=options.rectangleHeight;
-    fader=options.FaderValue;
-    mixRatioFade=options.MixFade;
-
-    //Wenn wir die Liftfahrt nicht über die Tasten steuern, sondern als Zeit nach dem Pressen des Space-key:
-    if((reset==true)&&(timeDriver==0)){
-        timeDriver=timestamp();
-    }else if(((timestamp()-timeDriver)>=3000)&&((timestamp()-timeDriver)<4000)&&(reset==false)){
-        //Es soll eine Aufwärtsbewegung sein:
-        console.log("move1: "+move);
-        move=+1;
-        //Wir säubern den Hintergrund, wenn Bewegung startet
+    if(backgroundReset==false){
+        background(backgroundColor[0],backgroundColor[1],backgroundColor[2],10);
+    }else{
+        background(backgroundColor[0],backgroundColor[1],backgroundColor[2]);
+        backgroundReset=true;
     }
 
-    if(reset==true){
-        background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+
+    //Wenn wir die Liftfahrt nicht über die Tasten steuern, sondern als Zeit nach dem Pressen des Space-key:
+    if((start==true)&&(timeDriver==0)){
+        timeDriver=timestamp();
+    }else if(((timestamp()-timeDriver)>=3000)&&((timestamp()-timeDriver)<4000)&&(start==true)){
+        //Es soll eine Aufwärtsbewegung sein:
+        move=+1;
+        //Wir säubern den Hintergrund, wenn Bewegung startet
+        backgroundReset=true;
         reset=false;
     }
 
-    //Geschwindigkeit mit der Farbwechsel Hintergrundfarbe-Objektfarbe stattfindet
-    //Nachdem ich Punkte gezeichnet habe, passe ich nach jeder fader-Zeit die Farbe an.
-    if(((timestamp()-reFadeTime)>fader)){
-        mixColor[0]=rectColor[0]*(1-mixRatio)+mixRatio*backgroundColor[0];
-        mixColor[1]=rectColor[1]*(1-mixRatio)+mixRatio*backgroundColor[1];
-        mixColor[2]=rectColor[2]*(1-mixRatio)+mixRatio*backgroundColor[2];
-        mixRatio=mixRatio*mixRatioFade;
-        reFadeTime=timestamp();
-    }
-
-
-    if((counter<=0)){
-        //Zuerst füllen wir die Liste mit der maximalen Anzahl Diamanten pro Durchlauf:
-
-        for(let i=0;i<numOfDiamonds;i++){
-            rectPosX=random(0,windowWidth1);
-            rectPosY=random(elevatorCenter-stripeWidth,elevatorCenter);
-            diamant=new Diamond(rectPosX,rectPosY,(rectWidth+random(0,rectWidth)),(rectHeight+random(0,rectHeight)),mixColor,opacity,1,(PI/4.0));
-            diamondList[i] = diamant;
-            currentDiamondNumber = currentDiamondNumber + 1;
-        }
-        counter=counter+1;
-
-        //Wir zeichnen einen neuen Satz Diamanten.
-    }else if(((timestamp()-redrawTime)>10)){
-        //Wenn noch genügend Diamantenplätze vorhanden sind, erzeugen wir bei jedem Durchgang einen neuen Diamanten.
-        //und fügen diesen der Liste hinzu.
-
-        let colorCase=toInt(random(0,2.9));
-
-        switch(colorCase){
-
-            case 0 : rectColor[0]=255;
-                rectColor[1]=random(0,30);
-                rectColor[2]=random(0,30);
-                break;
-            case 1 : rectColor[1]=255;
-                rectColor[0]=random(0,30);
-                rectColor[2]=random(0,30);
-                break;
-            case 2:  rectColor[2]=255;
-                rectColor[1]=random(0,30);
-                rectColor[0]=random(0,30);
-                break;
-
-        }
-
-        mixColor[0]=rectColor[0]*(1-mixRatio)+mixRatio*backgroundColor[0];
-        mixColor[1]=rectColor[1]*(1-mixRatio)+mixRatio*backgroundColor[1];
-        mixColor[2]=rectColor[2]*(1-mixRatio)+mixRatio*backgroundColor[2];
-        opacity=origOpacity;
-
-        for(let i=0;i<numOfDiamonds;i++){
-            rectPosX=random(0,windowWidth1);
-            rectPosY=random(0,windowHeight1);
-
-
-            if(move<(-0.1)){
-                elevatorScaler=elevatorScaler*0.9995;
-                rectPosY=random(elevatorCenter+(elevatorCenter-elevatorScaler),elevatorCenter+(elevatorCenter-elevatorScaler)+stripeWidth);
-                moveOld=move;
-            } else if(move>(0.1)){
-                elevatorScaler=elevatorScaler*0.9995;
-                rectPosY=random(elevatorScaler,elevatorScaler-stripeWidth);
-                moveOld=move;
-
-            } else{
-                //Wenn der Move-Zyklus abgeschlossen ist, soll der Streifen wieder zurückwandern.
-                if(elevatorScaler<elevatorCenter){
-                    elevatorScaler=elevatorScaler*1.0005;
-                }else{
-                    elevatorScaler=elevatorCenter;
-                }
-
-                if(moveOld<(-0.1)){
-                    rectPosY=random(elevatorCenter+(elevatorCenter-elevatorScaler),elevatorCenter+(elevatorCenter-elevatorScaler)+stripeWidth);
-                }else if(moveOld>(0.1)){
-                    rectPosY=random(elevatorScaler,elevatorScaler-stripeWidth);
-                }else{
-                    rectPosY=random(elevatorCenter-stripeWidth,elevatorCenter);
+    //Hier zeichnen wir die Linien immer und immer wieder, wenn das reset true ist.
+    //Dies wird deaktiviert, sobald eine Bewegung stattfindet.
+    if(reset==true){
+        angle=0;
+        referenceAngle=0;
+        LineArray=[];
+        //Die Linien werden gezeichnet:
+        for(let i=-0.2*windowWidth1; i<(1.2*windowWidth1+1);i=i+windowWidth1/verticalDivisions){
+            //X-Position des Startpunktes im Vertikalen Streifen wird festgelegt
+            XPosition=random(i,i+windowWidth1/verticalDivisions);
+            for(let j=(-windowHeight1/2); j<(3/2*windowHeight1+1);j=j+windowHeight1/horizontalDivisions) {
+                for(let k=0; k<repetitionLine;k++) {
+                    //Y-Position des Startpunktes im Quadranten innerhalb des vertikalen Streifens wird festgelegt.
+                    YPosition = random(j, j + windowHeight1 / horizontalDivisions);
+                    lineLength = random(randomLineLength_lower, randomLineLength_upper);
+                    //Wir sorgen noch für ein wenig Variation innerhalb des Streifens
+                    let variation = random(0, windowWidth1 / verticalDivisions);
+                    if (XPosition + variation < windowWidth1) {
+                        LineArray.push(new Line(XPosition + variation, YPosition, XPosition + variation + lineLength, YPosition));
+                    }
                 }
             }
-
-            diamant=new Diamond(rectPosX,rectPosY,rectWidth,rectHeight,mixColor,opacity,1,(PI/4.0));
-            diamondList[i] = diamant;
-
-            //Falls der Scaler zu klein wird.
-            if(elevatorScaler<elevatorCenter/2){
-                elevatorScaler=elevatorCenter/2;
-            }
-
-            //Wenn Elevator wieder voll ausgewachsen ist
-            if(elevatorScaler>1*elevatorCenter){
-                elevatorScaler=elevatorCenter;
-                move=0;
-                moveOld=0;}
         }
 
-        redrawTime=timestamp();
+        if(start==true) {
+            for (let l = 0; l < LineArray.length; l++) {
+                LineArray[l].draw();
+            }
+        }
     };
-    //Hier zeichnen wir die Diamanten bei jedem Durchlauf.
-    //Nach jeweils 1000ms wird eine Neue Liste erstellt.
-
-    push()
-
-    for(let i=0;i<numOfDiamonds;i++){
-        //push();
-        //Bewirkt, dass die Tropfen unregelmässig gross werden.
-        //Dies weil das scale in und nicht ausserhalb der Schleife ist.
-        //scale(1.05);
-        //console.log("zeichnen");
-        diamondList[i].draw();
-        //pop();
-    }
-    pop();
-    //translate(0,move);
-    if(((timestamp()-reBackgroundTime)>backgroundFader)) {
-        background(backgroundColor[0], backgroundColor[1], backgroundColor[2], 2);
-    }
 
 
-    //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
-    if((move!=0)&&(resetTrigger==false)){
-        resetTime=timestamp();
-        resetTrigger=true;
-    }
-    //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
-    //Heisst der Streifen von mOve -1 und Move 1 wird wieder abgebaut.
-    if((resetTrigger==true)&&((timestamp()-resetTime)>4000)){
-        resetTime=timestamp();
-        resetTrigger=false;
-        move=0;
-    }
+    if((timestamp()-oldtime)>1){
+        //Wenn Lift sich bewegt, dreht sich der Winkel um xxx Grad
+        switch(move){
+            case 0:
+                //Hier drehen wir die bei 1 und -1 gesteigerten Winkel wieder zurück.
+                //Wird nach einer Bewegung wieder 0, dann setzen wir die Move-Difference hoch
+                //erst nach einem Reset ist diese wieder OK.
+                //Damit Winkel nach dem Zurückdrehen nicht wieder am gleichen Ort landet,
+                //addieren/subtrahieren wir jeweils 0.1.
+                moveDifference=3;
+                if(anglecounter<0){
+                    angle=angle-(rotateAngleDeg*2*PI/360)-0.1;
+                    anglecounter++;}
 
+                if(anglecounter>0){
+                    angle=angle+(rotateAngleDeg*2*PI/360)+0.1;
+                    anglecounter--;}
+
+                if(anglecounter==0){
+                    //console.log("Hallo");
+                    //Durch den ständigen Wechsel der Winkel gibt es nach der Bewegung diese Vögel.
+                    //Aufgrund der unsauberen Division durch eine Zahl und den Rundungsfehlern??
+                    if(angle>0){
+                        //console.log("redux");
+                        angle=angle-(rotateAngleDeg*2*PI/360);
+                    }else if(angle<0){
+                        //console.log("increase");
+                        angle=angle+(rotateAngleDeg*2*PI/360);
+
+                    }else{
+                        angle=angle
+                    }
+                }
+                break;
+
+            //Solange Winkel grosser als -2Pi ist verkleinere ihn.
+            case 1:
+                reset=false;
+                if(angle>(-2*PI)) {
+                    angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
+                    referenceAngle=referenceAngle+(rotateAngleDeg*2 * PI / 360)
+                    //console.log("Hier2");
+                    anglecounter=anglecounter-1;
+                }
+                break;
+
+            //Solange Winkel kleiner als 2Pi ist, erhöhe ihn
+            case -1:
+                reset=false;
+                if(angle<(2*PI)) {
+                    angle = angle - (rotateAngleDeg*2 * PI / 360) * move;
+                    referenceAngle=referenceAngle-(rotateAngleDeg*2 * PI / 360)
+                    anglecounter=anglecounter+1;
+
+                    //console.log("Hier3");
+                }
+                break;
+        }
+
+        //Hier beginnen wir zu zählen, nachdem der Lift gestartet ist.
+        if((move!=0)&&(resetTrigger==false)){
+            resetTime=timestamp();
+            resetTrigger=true;
+        }
+        //Hier setzen wir die Bewegung nach einer gewissen Zeit zurück:
+        //Heisst, Winkel dreht sich dann zurück.
+        if((resetTrigger==true)&&((timestamp()-resetTime)>1000)){
+            resetTime=timestamp();
+            resetTrigger=false;
+            console.log("Hier");
+            move=0;
+        }
+
+        let helper1;
+        let helper2;
+
+        //Hier zeichnen wir die Linien.
+        // Dies wird nur getan, wenn wir das Programm gestartet haben.
+        //Hier drehen wir die Linien entsprechend dem vorgegebenen Winkel:
+
+        if(start==true){
+            for(let l=0;l<LineArray.length;l++){
+                helper1=LineArray[l].getPosX1()+moveDifference*cos(angle);
+                LineArray[l].setPosX1(helper1);
+                helper2=LineArray[l].getPosY1()+moveDifference*sin(angle);
+                LineArray[l].setPosY1(helper2);
+                helper2=LineArray[l].getPosX1()+LineArray[l].getLength()*cos(angle)+moveDifference*cos(angle);
+                LineArray[l].setPosX2(helper2);
+                helper2=LineArray[l].getPosY1()+LineArray[l].getLength()*sin(angle)+moveDifference*sin(angle);
+                LineArray[l].setPosY2(helper2);
+                LineArray[l].draw();
+                if(helper1>windowWidth1){
+                    LineArray[l].setPosX1(0);
+                    LineArray[l].setPosX2(0+LineArray[l].getLength());
+                }
+            }
+        }
+        //Den gesamten Background neu zu zeichnen setzt die Framerate massiv runter
+        //Deshalb nicht regelmässig neu zeichnen.
+        oldtime=timestamp();
+    };
+    backgroundReset=false;
 //Falls Vektor mit Rechtecken voll ist, beginne ihn erneut von vorne zu füllen.
 
 }
+
+class Line {
+    constructor(PointX1,PointY1,PointX2,PointY2){
+
+        let _posX1 = PointX1;
+        let _posY1 = PointY2;
+        let _posX2 = PointX2;
+        let _posY2 = PointY2;
+        let _lineLength= ((_posX1-_posX2)^2+(_posY1-_posY2)^2)^(1/2)
+
+        this.getPosX1 = function() { return _posX1; }
+        this.getPosY1 = function() { return _posY1; }
+        this.getPosX2 = function() { return _posX2; }
+        this.getPosY2 = function() { return _posY2; }
+        this.getLength = function() { return _lineLength; }
+
+        this.setPosX1 = function(posX1) { _posX1 = posX1; }
+        this.setPosY1 = function(posY1) { _posY1 = posY1; }
+        this.setPosX2 = function(posX2) { _posX2 = posX2; }
+        this.setPosY2 = function(posY2) { _posY2 = posY2; }
+
+        this.draw = function() {
+            push();
+            strokeWeight(lineStroke);
+            stroke(lineColor);
+            line(_posX1,_posY1,_posX2,_posY2);
+            pop();
+        }
+    }
+}
+
 
 function keyPressed() {
     if (key == 'a' ||key == 'A') {start=true; };
     if (key == 'd' || key == 'D') start=false;
 
+    //38 ist lift fährt rauf
+    if (keyCode === 38){
+        /*        move=-1;
+                reset=false;
+                //Wir säubern den Hintergrund, wenn Bewegung startet
+                backgroundReset=true;*/
+    }
+    //40 ist lift fährt runter
+    if (keyCode === 40){
+        /*        move=+1;
+                //Wir säubern den Hintergrund, wenn Bewegung startet
+                backgroundReset=true;
+                reset=false;*/}
     if (keyCode === 32){
         move=0;
+        //reset=true;
+        start=true;
         reset=true;
+        moveDifference=1;
+        backgroundReset=true;
         timeDriver=0;
     }
 }
@@ -319,10 +364,15 @@ function keyReleased() {
     //if (keyCode === 38){move=0;}
     //40 ist lift fährt runter
     //if (keyCode === 40){move=0;}
+
+    //if (keyCode === 32){reset=false;}
+
+    //if (keyCode === 32){move=0;}
 }
 
 
 // Tools
+
 // resize canvas when the window is resized
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight, false);
@@ -349,154 +399,6 @@ function timestamp() {
     return Date.now();
 }
 
-//Die Rechtecke, welche es für die Diamanten braucht.
-class randomRectangle {
-    constructor(posX,posY,width,height,color,opacity,scale,radius){
-        let _posX = posX;
-        let _posY = posY;
-        let _width = width;
-        let _height = height;
-        let _color=color;
-        let _opacity= opacity;
-        let _scale=scale;
-        let _radius=radius;
-
-        this.getPosX = function() { return _posX; }
-        this.getPosY = function() { return _posY; }
-        this.getWidth = function() { return _width; }
-        this.getHeight = function() { return _height; }
-        this.getColor = function() { return _color; }
-        this.getOpacity = function() { return _opacity; }
-        this.getScale = function() { return _scale; }
-        this.setPosX = function(posX) { _posX = posX; }
-        this.setPosY = function(posY) { _posY = posY; }
-        this.setWidth = function(width) { _width = width; }
-        this.setHeight = function(height) { _height = height; }
-        this.setOpacity = function(opacity) { _opacity = opacity; }
-        this.setColor = function(color) { _color = color; }
-        this.setScale = function(scale) { _scale = scale; }
-
-        this.draw = function() {
-            //Mit push() speichern wir die aktuellen Drawing settings.
-            push();
-            noStroke();
-            fill(_color[0],_color[1],_color[2],_opacity);
-            ///Hier holen wir die gespeicherten Drawing-Settings wieder hervor.
-            pop();
-        }
-    }
-}
-
-
-class Diamond {
-    constructor(posX,posY,width,height,color,opacity,scale,rotation){
-        let _posX = posX;
-        let _posY = posY;
-        let _width = width;
-        let _height = height;
-        let _color=color;
-        let _opacity= opacity;
-        let _scale=scale;
-        let _rotation=rotation;
-
-        let randomRadius1;
-        let randomRadius2;
-        let randomRadius3;
-        let randomRadius4;
-        let radiusArray;
-        let linePoint1;
-        let linePoint2;
-        let linePoint3;
-        let linePoint4;
-
-        let linePoint1_2;
-        let linePoint2_2;
-        let linePoint3_2;
-        let linePoint4_2;
-
-        this.getPosX = function() { return _posX; }
-        this.getPosY = function() { return _posY; }
-        this.getWidth = function() { return _width; }
-        this.getHeight = function() { return _height; }
-        this.getColor = function() { return _color; }
-        this.getOpacity = function() { return _opacity; }
-        this.getScale = function() { return _scale; }
-        this.getRotation = function() { return _rotation; }
-
-        this.setPosX = function(posX) { _posX = posX; }
-        this.setPosY = function(posY) { _posY = posY; }
-        this.setWidth = function(width) { _width = width; }
-        this.setHeight = function(height) { _height = height; }
-        this.setOpacity = function(opacity) { _opacity = opacity; }
-        this.setColor = function(color) { _color = color; }
-        this.setScale = function(scale) { _scale = scale; }
-        this.setRotation = function(rotation) { _rotation = rotation; }
-
-        radiusArray=new Array(4);
-
-        if(_width>_height){
-            radiusBase=_height;
-        }else{
-            radiusBase=_width;
-        }
-
-        //Hier berechnen wir die Radien der Ecken.
-        randomRadius1=random(radiusBase/lowRadiusLimit,radiusBase/highRadiusLimit);
-        randomRadius2=random(radiusBase/lowRadiusLimit,radiusBase/highRadiusLimit);
-        randomRadius3=random(radiusBase/lowRadiusLimit,radiusBase/highRadiusLimit);
-        randomRadius4=random(radiusBase/lowRadiusLimit,radiusBase/highRadiusLimit);
-        radiusArray[0]=randomRadius1;
-        radiusArray[1]=randomRadius2;
-        radiusArray[2]=randomRadius3;
-        radiusArray[3]=randomRadius4;
-        shiftRectX=random(-radiusBase/4,radiusBase/4);
-        if(random(-1,1)>=0){randomSigma=1}else(randomSigma=-1);
-        shiftRectY=shiftRectX*randomSigma;
-
-
-        this.draw = function() {
-            //Mit push() speichern wir die aktuellen Drawing settings.
-            //Wie das darunterliegende Rechteck verschoben wird.
-            rand_rect2=new randomRectangle(0,0,_width,_height,_color,_opacity,_scale,radiusArray);
-            rand_rect=new randomRectangle(0+shiftRectX,0+shiftRectY,_width,_height,_color,_opacity,_scale,radiusArray);
-
-
-            push();
-            translate(_posX,_posY);
-            rotate(_rotation);
-            rand_rect2.draw();
-
-            //Verbindungslinie zwischen oberem und unterem Rechteck
-            //unteres Rechteck
-            linePoint1=createVector(0+radiusArray[0],0+radiusArray[0]);
-            linePoint2=createVector(0+_width-radiusArray[1],0+radiusArray[1]);
-            linePoint3=createVector(0+radiusArray[3],0+_height-radiusArray[3]);
-            linePoint4=createVector(0+_width-radiusArray[2],0+_width-radiusArray[2]);
-
-            linePoint1_2=createVector(linePoint1.x+shiftRectX,linePoint1.y+shiftRectY);
-            linePoint2_2=createVector(linePoint2.x+shiftRectX,linePoint2.y+shiftRectY);
-            linePoint3_2=createVector(linePoint3.x+shiftRectX,linePoint3.y+shiftRectY);
-            linePoint4_2=createVector(linePoint4.x+shiftRectX,linePoint4.y+shiftRectY);
-
-            strokeWeight(2*radiusArray[0]);
-            stroke(_color[0],_color[1],_color[2],_opacity);
-            line(linePoint1.x, linePoint1.y, linePoint1_2.x, linePoint1_2.y);
-            strokeWeight(2*radiusArray[1]);
-            line(linePoint2.x, linePoint2.y, linePoint2_2.x, linePoint2_2.y);
-            strokeWeight(2*radiusArray[3]);
-            line(linePoint3.x, linePoint3.y, linePoint3_2.x, linePoint3_2.y);
-            strokeWeight(2*radiusArray[2]);
-            line(linePoint4.x, linePoint4.y, linePoint4_2.x, linePoint4_2.y);
-
-            //Das darüberliegende Rechteck
-            rand_rect.draw();
-            pop();
-        }
-    }
-}
-
-
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight, false);
 }
-
