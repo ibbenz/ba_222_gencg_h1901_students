@@ -1,6 +1,6 @@
 ---
 layout: sketch
-title: "title of the sketch" 
+title: "Mountain_09_full_resolution Time Move" 
 category: "Experiment" 
 thumb_name: "thumb.jpg"
 includes:
