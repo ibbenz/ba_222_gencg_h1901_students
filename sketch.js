@@ -5,7 +5,7 @@ var oldtime;
 var rand_rect;
 //Das unterlagerte Rechteck.
 let rand_rect2;
-
+//
 //Die Farben für das Rechteck.
 var rectColor;
 var backgroundColor;
