@@ -103,4 +103,4 @@ function saveThumb(w, h) {
   save(img, 'thumb.jpg');
 }
 
-
+//
