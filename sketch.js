@@ -1,4 +1,5 @@
 
+//GUI-Values
 var options = {
     rectangleWidth: 10,
     rectangleHeight: 10,
